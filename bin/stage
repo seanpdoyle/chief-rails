@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Deploy to staging
+
+set -e
+
+git push staging master
+
+heroku run rake db:migrate --remote staging
