@@ -42,6 +42,10 @@ GEM
       json
     arel (4.0.0)
     atomic (1.1.13)
+    aws-sdk (1.8.5)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -79,6 +83,8 @@ GEM
     coffee-script-source (1.6.3)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
+    custom_configuration (0.0.2)
+      railties (> 3.0)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
     delayed_job (4.0.0)
@@ -236,6 +242,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     webmock (1.13.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -253,12 +260,14 @@ PLATFORMS
 DEPENDENCIES
   actionpack-page_caching
   airbrake
+  aws-sdk
   better_errors
   binding_of_caller
   bourbon
   capybara-webkit
   clearance
   coffee-rails
+  custom_configuration
   database_cleaner
   delayed_job_active_record (>= 4.0.0)
   email_validator
