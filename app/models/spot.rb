@@ -4,8 +4,14 @@ class Spot < ActiveRecord::Base
 
   friendly_id :slug_candidates, use: :slugged
 
-  validates_presence_of :name
+  validates_presence_of :name, :slug
   validates_uniqueness_of :name, :slug
+
+  validates_numericality_of :lat, less_than_or_equal_to: 90.0,
+                                  greater_than_or_equal_to: -90.0
+
+  validates_numericality_of :lng, less_than_or_equal_to: 180.0,
+                                  greater_than_or_equal_to: -180.0
 
   def slug_candidates
     [
