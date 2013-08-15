@@ -11,7 +11,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-module App
+module Spots
   class Application < Rails::Application
     config.active_record.default_timezone = :utc
 

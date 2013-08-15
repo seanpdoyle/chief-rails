@@ -1,0 +1,6 @@
+- if @spots.empty?
+  aside No Spots to Display.
+
+- @spots.each do |spot|
+  article.spot id=dom_id(spot)
+    aside= spot.name.titleize

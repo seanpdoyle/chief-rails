@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+gem 'actionpack-page_caching'
 gem 'airbrake'
 gem 'bourbon'
 gem 'clearance'
@@ -12,6 +13,7 @@ gem 'flutie'
 gem 'high_voltage'
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'neat'
 gem 'pg'
 gem 'rack-timeout'
@@ -20,6 +22,7 @@ gem 'recipient_interceptor'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'turbolinks'
 gem 'uglifier'
 gem 'unicorn'
 gem 'workless', '~> 1.1.3'
@@ -36,7 +39,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'poltergeist'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
