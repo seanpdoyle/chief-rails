@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :spot do
-    name "MyString"
+    sequence(:name) { |i| "spot #{i}" }
     lat 1.5
     lng 1.5
   end
