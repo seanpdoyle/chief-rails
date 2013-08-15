@@ -45,3 +45,32 @@ feature 'Creating Spots' do
     expect(page).to have_content 'new spot'.titleize
   end
 end
+
+feature 'Editing Spot' do
+  given(:spot) { create :spot }
+
+  before do
+    visit spot_path(spot)
+  end
+
+  scenario 'from the #show page' do
+    find('#edit_spot').click
+
+    expect(current_path).to eq edit_spot_path(spot)
+  end
+end
+
+feature 'Deleting Spot' do
+  given(:spot) { create :spot }
+
+  before do
+    visit edit_spot_path(spot)
+  end
+
+  scenario 'from the Edit page' do
+    find('#destroy_spot').click
+
+    expect(current_path).to eq spots_path
+    expect(Spot.all).to be_empty
+  end
+end

@@ -1,5 +1,9 @@
 class SpotsController < InheritedResources::Base
   def permitted_params
-    params.permit spot: [:name]
+    if params[:spot]
+      {spot: params.require(:spot).permit(:name)}
+    else
+      {}
+    end
   end
 end
