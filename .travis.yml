@@ -1,23 +1,19 @@
 bundler_args: --without development --path=~/.bundle
 language: ruby
 rvm:
-  - 2.0.0
+- 2.0.0
 env:
   global:
-    - BUNDLE_ARCHIVE="chief-bundle"
-    - AWS_S3_REGION="us-east-1"
-    - AWS_S3_BUCKET="chief-gems"
-    - RAILS_ENV=test
-    - secure: RAUYfNQIt134ubwZv165SlvlJRMa/g/V52QN6z3Re1cZX4bJo8u1CN2a8qNSnUYbQpA91A35sXM/iK9hOlVu+/cCQtjunPA9A3DRUuttN455z/53rkO5EmS1rx7rPvPv08uabN1ZcYtM/EWJTFp2rwm5robwwOwajrNWFqZESGo=
- 
-# Ensure Bundler >= 1.1, don't install rdocs, and fetch a cached bundle from S3
+  - BUNDLE_ARCHIVE="chief-bundle"
+  - AWS_S3_REGION="us-east-1"
+  - AWS_S3_BUCKET="chief-gems"
+  - RAILS_ENV=test
+  - secure: NNHTEY++oL5RGWo078phL3U0Q+S8Oh/jWzan15WwmYT0N3CFSLEFA+WTj3GkhlpxS0gA3U+0aJj/Z0ASX5EyrSG8sB+UEAtEmNbRFQ9RZ1HvUrGqqkGdKuX6MaVDSNV1ianp1Km9M6VMdrbHLTWAHf3SMYur7Euv7xQBMtdgwZw=
 before_install:
-  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-  - gem install bundler fog
-  - "./bin/travis/bundle_install.sh"
-
+- 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+- gem install bundler fog
+- ./bin/travis/bundle_install.sh
 after_script:
-  - "ruby bin/travis/bundle_cache.rb"
-
+- ruby bin/travis/bundle_cache.rb
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:create db:migrate spec
+- RAILS_ENV=test bundle exec rake --trace db:create db:migrate spec
