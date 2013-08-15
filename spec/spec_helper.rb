@@ -21,5 +21,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 end
 
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :poltergeist
 WebMock.disable_net_connect!(allow_localhost: true)

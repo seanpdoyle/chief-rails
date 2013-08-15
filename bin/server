@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+#
+
+set -e
+
+bin/setup
+
+bin/stubs/foreman start
