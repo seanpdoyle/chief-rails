@@ -2,8 +2,4 @@
 #
 # Deploy to production
 
-set -e
-
-git push production master
-
-heroku run rake db:migrate --remote production
+bin/deploy-to staging

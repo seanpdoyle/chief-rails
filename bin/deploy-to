@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Deploy to the provided environment
+
+set -e
+
+if [ -z "$1" ]; then
+  red "you have must provide an environment"
+  return $FAIL
+fi
+
+git push $1 master
+
+heroku run rake db:migrate paperclip:refresh:missing_styles --remote $1
