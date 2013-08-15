@@ -41,8 +41,16 @@ feature 'Creating Spots' do
   scenario 'from the #new_spot form' do
     create_spot name: 'new spot'
 
-    expect(current_path).to eq "#{spots_path}/new-spot"
-    expect(page).to have_content 'new spot'.titleize
+    spot = Spot.last
+
+    expect(spot.name).to eq 'new spot'
+    expect(spot.slug).to eq 'new-spot'
+    expect(spot.photo).not_to be_nil
+
+    expect(current_path).to eq spot_path(spot)
+
+    expect(page).to have_content spot.name.titleize
+    expect(find_photo(spot.photo(:large), spot.name)).not_to be_nil
   end
 end
 
