@@ -1,9 +1,23 @@
+bundler_args: --without development --path=~/.bundle
 language: ruby
 rvm:
   - 2.0.0
 env:
-  - DB=postgresql
+  global:
+    - BUNDLE_ARCHIVE="chief-bundle"
+    - AWS_S3_REGION="us-east-1"
+    - AWS_S3_BUCKET="chief-gems"
+    - RAILS_ENV=test
+    - secure: RAUYfNQIt134ubwZv165SlvlJRMa/g/V52QN6z3Re1cZX4bJo8u1CN2a8qNSnUYbQpA91A35sXM/iK9hOlVu+/cCQtjunPA9A3DRUuttN455z/53rkO5EmS1rx7rPvPv08uabN1ZcYtM/EWJTFp2rwm5robwwOwajrNWFqZESGo=
+ 
+# Ensure Bundler >= 1.1, don't install rdocs, and fetch a cached bundle from S3
+before_install:
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - gem install bundler fog
+  - "./bin/travis/bundle_install.sh"
+
+after_script:
+  - "ruby bin/travis/bundle_cache.rb"
+
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate spec
-before_script:
-  - psql -c 'create database chief_test' -U postgres
+  - RAILS_ENV=test bundle exec rake --trace db:create db:migrate spec
