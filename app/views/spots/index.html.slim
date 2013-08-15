@@ -3,4 +3,4 @@
 
 - @spots.each do |spot|
   article.spot id=dom_id(spot)
-    aside= spot.name.titleize
+    aside= link_to spot.name.titleize, spot
