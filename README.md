@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/seanpdoyle/spot.png)](https://travis-ci.org/seanpdoyle/spot)
+
 You look great in Suspenders
 ============================
 
