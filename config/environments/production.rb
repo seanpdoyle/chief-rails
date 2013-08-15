@@ -1,5 +1,7 @@
 require Rails.root.join('config/initializers/smtp')
 Chief::Application.configure do
+  config.x.paperclip.s3 = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

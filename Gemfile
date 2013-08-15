@@ -51,6 +51,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'aws-sdk'
   gem 'newrelic_rpm', '>= 3.5.7'
   gem 'rails_12factor'
 end
