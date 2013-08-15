@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'uglifier'
 gem 'unicorn'
+gem 'workless', '~> 1.1.3'
 
 group :development do
   gem 'foreman'

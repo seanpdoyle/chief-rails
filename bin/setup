@@ -3,10 +3,24 @@
 # Set up Rails app. Run this script immediately after cloning the codebase.
 # https://github.com/thoughtbot/guides/tree/master/protocol
 
+save_bundle_md () {
+  bundle install --binstubs=bin/stubs
+  echo $MD5 > $GEMFILE_MD5
+  echo "Saving Bundle MD5..."
+}
+
 set -e
 
-bundle install --binstubs=bin/stubs
+GEMFILE_MD5=.bundle/GEMFILE_MD5
 
-bin/rake db:migrate
+MD5=$(md5 Gemfile)
 
-bin/rake db:setup
+if ! [ -f $GEMFILE_MD5 ]; then
+  save_bundle_md
+elif [[ "$(cat $GEMFILE_MD5)" != "$MD5" ]]; then
+  save_bundle_md
+fi
+
+echo "Running migrations..."
+
+bin/rake db:create db:migrate

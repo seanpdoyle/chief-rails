@@ -4,6 +4,10 @@
 
 set -e
 
+export PORT=3000
+
 bin/setup
 
-bin/stubs/foreman start
+export PORT=3000
+
+exec bin/stubs/foreman start
