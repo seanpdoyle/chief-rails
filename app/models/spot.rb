@@ -16,9 +16,11 @@ class Spot < ActiveRecord::Base
 
   validates_presence_of :name, :slug
   validates_uniqueness_of :name, :slug
+
+  validates :photo, attachment_presence: true
   
-  validates_attachment_presence :photo
-  validates_attachment_size :photo, in: 0..2.megabytes
+  # validates_attachment_size :photo, in: 0..2.megabytes
+  validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
   def slug_candidates
     [
