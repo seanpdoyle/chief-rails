@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Spots::Application.config.secret_key_base = 'c79a9f3c05b8e50fd991ccdca6a771a569fd6b3e7f099e3877f0b80fd84ae56d89145eb0788e1061f550dd05be315fb280303fda4d18e6526b225d2ae3d8d662'
+Chief::Application.config.secret_key_base = 'c79a9f3c05b8e50fd991ccdca6a771a569fd6b3e7f099e3877f0b80fd84ae56d89145eb0788e1061f550dd05be315fb280303fda4d18e6526b225d2ae3d8d662'
