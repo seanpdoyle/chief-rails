@@ -1,6 +1,6 @@
 development: &default
   adapter: postgresql
-  database: spot_development
+  database: chief_development
   encoding: unicode
   min_messages: warning
   port: <%= ENV["BOXEN_POSTGRESQL_PORT"] || 5432 %>
@@ -9,4 +9,4 @@ development: &default
 
 test:
   <<: *default
-  database: spot_test
+  database: chief_test

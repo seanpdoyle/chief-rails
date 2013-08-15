@@ -5,7 +5,7 @@ timeout (ENV['WEB_TIMEOUT'] || 5).to_i
 preload_app true
 
 if ENV['RACK_ENV'] == 'development'
-  listen "#{ENV['BOXEN_SOCKET_DIR']}/spot", backlog: 1024
+  listen "#{ENV['BOXEN_SOCKET_DIR']}/chief", backlog: 1024
 end
 
 before_fork do |server, worker|
