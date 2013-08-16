@@ -5,6 +5,8 @@ Chief::Application.configure do
   
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_controller.asset_host = "//s3.amazonaws.com/#{ENV['FOG_DIRECTORY']}"
+  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
