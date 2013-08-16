@@ -1,6 +1,1 @@
-article id=dom_id(@spot)
-  h1= @spot.name.titleize
-
-  = image_tag @spot.photo(:large), alt: @spot.name
-
-  a#edit_spot href=edit_spot_path(@spot) Edit
+= render @spot
