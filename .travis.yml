@@ -1,13 +1,9 @@
 bundler_args: --without development --path=~/.bundle
-
 language: ruby
-
 rvm:
 - 2.0.0
-
 notifications:
   email: false
-
 env:
   global:
   - BUNDLE_ARCHIVE="chief-bundle"
@@ -15,16 +11,21 @@ env:
   - AWS_S3_BUCKET="chief-gems"
   - RAILS_ENV=test
   - secure: NNHTEY++oL5RGWo078phL3U0Q+S8Oh/jWzan15WwmYT0N3CFSLEFA+WTj3GkhlpxS0gA3U+0aJj/Z0ASX5EyrSG8sB+UEAtEmNbRFQ9RZ1HvUrGqqkGdKuX6MaVDSNV1ianp1Km9M6VMdrbHLTWAHf3SMYur7Euv7xQBMtdgwZw=
-
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq imagemagick
 - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
 - gem install bundler fog
 - ./bin/travis/bundle_install.sh
-
 script:
 - RAILS_ENV=test bundle exec rake --trace db:create db:migrate spec
-
 after_script:
 - ruby bin/travis/bundle_cache.rb
+deploy:
+  provider: heroku
+  api_key:
+    secure: p9NugOtmjzyDHaRQGOKDE/63dhnp5DpEJMqGa9FxK9Q69wN+2vY1ptaZQKjFypjWOdUEhIm4CE9mqLDMKNlZ3QioWhULGK5wQ7Lun4ZJ+73dJvCjh3Y/EKRsF8vQs/bn/S7U9iEFq9R9kCaUy5ozIMZEEyvKIckZ2pgAaBqbciw=
+  app:
+    master: chief-staging
+  on:
+    repo: seanpdoyle/chief
