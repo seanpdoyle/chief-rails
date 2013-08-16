@@ -5,6 +5,9 @@ language: ruby
 rvm:
 - 2.0.0
 
+notifications:
+  email: false
+
 env:
   global:
   - BUNDLE_ARCHIVE="chief-bundle"
