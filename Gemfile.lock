@@ -45,6 +45,10 @@ GEM
       activemodel
       fog (>= 1.8.0)
     atomic (1.1.13)
+    aws-sdk (1.11.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -68,6 +72,10 @@ GEM
       bcrypt-ruby
       email_validator (~> 1.4)
       rails (>= 3.1)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -78,6 +86,8 @@ GEM
     coffee-script-source (1.6.3)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
+    custom_configuration (0.0.2)
+      railties (> 3.0)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
     delayed_job (4.0.0)
@@ -149,6 +159,11 @@ GEM
     newrelic_rpm (3.6.6.147)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    paperclip (3.5.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -244,6 +259,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     webmock (1.13.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -262,12 +278,14 @@ DEPENDENCIES
   actionpack-page_caching
   airbrake
   asset_sync
+  aws-sdk
   better_errors
   binding_of_caller
   bourbon
   capybara-webkit
   clearance
   coffee-rails
+  custom_configuration
   database_cleaner
   delayed_job_active_record (>= 4.0.0)
   email_validator
@@ -282,6 +300,7 @@ DEPENDENCIES
   launchy
   neat
   newrelic_rpm (>= 3.5.7)
+  paperclip
   pg
   rack-timeout
   rails (>= 4.0.0)

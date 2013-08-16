@@ -7,6 +7,7 @@ gem 'airbrake'
 gem 'bourbon'
 gem 'clearance'
 gem 'coffee-rails'
+gem 'custom_configuration'
 gem 'delayed_job_active_record', '>= 4.0.0'
 gem 'email_validator'
 gem 'flutie'
@@ -16,6 +17,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'neat'
+gem 'paperclip'
 gem 'pg'
 gem 'rack-timeout'
 gem 'rails', '>= 4.0.0'
@@ -51,6 +53,7 @@ end
 
 group :staging, :production do
   gem 'asset_sync'
+  gem 'aws-sdk'
   gem 'newrelic_rpm', '>= 3.5.7'
   gem 'rails_12factor'
 end
