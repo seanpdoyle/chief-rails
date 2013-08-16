@@ -94,8 +94,6 @@ GEM
     custom_configuration (0.0.2)
       railties (> 3.0)
     dalli (2.6.4)
-    dalli-elasticache (0.1.0)
-      dalli (>= 1.0.0)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
     delayed_job (4.0.0)
@@ -154,6 +152,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -318,7 +317,6 @@ DEPENDENCIES
   coffee-rails
   custom_configuration
   dalli
-  dalli-elasticache
   database_cleaner
   delayed_job_active_record (>= 4.0.0)
   email_validator
@@ -331,6 +329,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   launchy
+  memcachier
   meta_request
   neat
   newrelic_rpm (>= 3.5.7)

@@ -17,7 +17,8 @@ module Chief
 
     config.x.bullet.enabled = false
     config.x.paperclip.s3 = false
-    config.x.cache.elasticache = false
+    
+    config.cache_store = :dalli_store
 
     config.generators do |generate|
       generate.helper false
