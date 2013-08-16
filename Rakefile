@@ -2,7 +2,6 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
-require 'reek/rake/task'
 
 Chief::Application.load_tasks
 if defined?(RSpec)
@@ -17,6 +16,8 @@ end
 
 
 if defined?(Reek)
+  require 'reek/rake/task'
+  
   Reek::Rake::Task.new do |t|
     t.fail_on_error = false
   end
