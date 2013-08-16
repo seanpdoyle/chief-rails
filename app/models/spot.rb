@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: spots
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  slug               :string(255)
+#  lat                :float
+#  lng                :float
+#  created_at         :datetime
+#  updated_at         :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#
+
 class Spot < ActiveRecord::Base
   extend FriendlyId
   extend FriendlyId::Finders

@@ -19,6 +19,7 @@ gem 'jquery-turbolinks'
 gem 'neat'
 gem 'paperclip'
 gem 'pg'
+gem 'rack-mini-profiler'
 gem 'rack-timeout'
 gem 'rails', '>= 4.0.0'
 gem 'recipient_interceptor'
@@ -31,14 +32,18 @@ gem 'unicorn'
 gem 'workless', '~> 1.1.3'
 
 group :development do
-  gem 'foreman'
+  gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'foreman'
+  gem 'meta_request'
+  gem 'rails-footnotes', '>= 3.7.9'
 end
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
+  gem 'reek'
 end
 
 group :test do
@@ -49,6 +54,10 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock'
+end
+
+group :development, :staging do
+  gem 'bullet'
 end
 
 group :staging, :production do
