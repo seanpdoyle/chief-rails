@@ -1,5 +1,6 @@
 Chief::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.x.bullet.enabled = true
 
   config.cache_store = :dalli_store, "127.0.0.1:#{ENV['BOXEN_MEMCACHED_PORT'] || 11211}"
 

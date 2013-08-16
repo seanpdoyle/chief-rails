@@ -2,7 +2,8 @@ Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])
 require Rails.root.join('config/initializers/smtp')
 Chief::Application.configure do
   config.x.paperclip.s3 = true
-
+  config.x.bullet.enabled = true
+  
   config.cache_store = :dalli_store
   
   # Settings specified here will take precedence over those in config/application.rb.
