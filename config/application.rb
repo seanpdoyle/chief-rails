@@ -15,6 +15,8 @@ module Chief
   class Application < Rails::Application
     config.active_record.default_timezone = :utc
 
+    config.x.paperclip.s3 = false
+
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false
