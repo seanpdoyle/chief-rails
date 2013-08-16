@@ -2,4 +2,4 @@
 #
 # Deploy to production
 
-bin/deploy-to staging
+bin/deploy-to production
