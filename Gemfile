@@ -56,6 +56,10 @@ group :test do
   gem 'webmock'
 end
 
+group :development, :staging do
+  gem 'bullet'
+end
+
 group :staging, :production do
   gem 'asset_sync'
   gem 'aws-sdk'

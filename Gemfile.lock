@@ -61,6 +61,8 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    bullet (4.6.0)
+      uniform_notifier
     callsite (0.0.11)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -282,6 +284,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.2.0)
     uuidtools (2.1.4)
     webmock (1.13.0)
       addressable (>= 2.2.7)
@@ -306,6 +309,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bourbon
+  bullet
   capybara-webkit
   clearance
   coffee-rails
