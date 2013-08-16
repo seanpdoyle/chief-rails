@@ -64,7 +64,7 @@ end
 group :staging, :production do
   gem 'asset_sync'
   gem 'aws-sdk'
-  gem 'memcachier'
+  gem 'dalli-elasticache'
   gem 'newrelic_rpm', '>= 3.5.7'
   gem 'rails_12factor'
 end
