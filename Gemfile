@@ -8,6 +8,7 @@ gem 'bourbon'
 gem 'clearance'
 gem 'coffee-rails'
 gem 'custom_configuration'
+gem 'dalli'
 gem 'delayed_job_active_record', '>= 4.0.0'
 gem 'email_validator'
 gem 'flutie'
@@ -54,6 +55,7 @@ end
 group :staging, :production do
   gem 'asset_sync'
   gem 'aws-sdk'
+  gem 'memcachier'
   gem 'newrelic_rpm', '>= 3.5.7'
   gem 'rails_12factor'
 end
