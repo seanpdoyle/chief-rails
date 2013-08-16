@@ -1,3 +1,4 @@
+Paperclip.registered_attachments_styles_path = 'config/paperclip_attachments.yml'
 if Rails.configuration.x.paperclip.s3
   Chief::Application.configure do
     config.paperclip_defaults = {
