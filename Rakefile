@@ -12,11 +12,17 @@ if defined?(RSpec)
     t.pattern = './spec/models/factories_spec.rb'
   end
 
+  task spec: :factory_specs
+end
+
+
+if defined?(Reek)
   Reek::Rake::Task.new do |t|
     t.fail_on_error = false
   end
 
-  task spec: [:factory_specs, :reek]
+  task spec: :reek
 end
+
 task(:default).clear
 task :default => [:spec]
