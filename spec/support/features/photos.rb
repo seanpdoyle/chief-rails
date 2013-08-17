@@ -1,9 +1,9 @@
 module Features
-  def find_photo(url, alt = nil)
-    selector = "img[src='#{url}']"
+  def expect_photo(url, alt = nil)
+    selector = "//img[contains(@src, '#{url}')]"
     if alt.present?
-      selector = "#{selector}[alt='#{alt}']"
+      selector = "#{selector}[contains(@alt, '#{alt}')]"
     end
-    find(selector)
+    expect(page).to have_xpath(selector)
   end
 end

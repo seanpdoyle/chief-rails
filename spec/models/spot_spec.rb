@@ -50,25 +50,25 @@ describe Spot, 'validations' do
 end
 
 describe Spot, '#has_location?' do
-  subject { build :spot, lat: lat, lng: lng }
+  subject { build :spot, lat: lat, lng: lng, photo: nil }
   let(:lat) { nil }
   let(:lng) { nil }
 
-  context 'lat and lng are nil' do
+  context 'when lat and lng are nil' do
     it { should_not have_location }
   end
 
-  context 'lat is nil' do
+  context 'when lat is nil' do
     let(:lng) { 0 }
     it { should_not have_location }
   end
 
-  context 'lng is nil' do
+  context 'when lng is nil' do
     let(:lat) { 0 }
     it { should_not have_location }
   end
 
-  context 'lat and lng are valid' do
+  context 'when lat and lng are valid' do
     let(:lat) { 0 }
     let(:lng) { 0 }
     it { should have_location }

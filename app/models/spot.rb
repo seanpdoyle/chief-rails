@@ -26,8 +26,6 @@ class Spot < ActiveRecord::Base
   has_attached_file :photo,
                     processors: [:thumbnail, :location],
                     styles: { large: '600x600#' }
-  
-  # process_in_background :photo, processing_image_url: "/assets/images/processing.jpg"
 
   validates_numericality_of :lat, less_than_or_equal_to: 90.0,
                                   greater_than_or_equal_to: -90.0,
@@ -46,7 +44,7 @@ class Spot < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
   def has_location?
-    [lat, lng].all?(&:present?)
+    [lat, lng].all? &:present?
   end
 
   def slug_candidates
