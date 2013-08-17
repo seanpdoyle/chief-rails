@@ -25,9 +25,9 @@ class Spot < ActiveRecord::Base
 
   has_attached_file :photo,
                     processors: [:thumbnail, :location],
-                    styles: { large: '600x600#' },
-                    url: "/system/:attachment/:id/:style/:filename",
-                    path: ":rails_root/public/system/:attachment/:id/:style/:filename"
+                    styles: { large: '600x600#' }#,
+                    # url: "/system/:attachment/:id/:style/:filename",
+                    # path: ":rails_root/public/system/:attachment/:id/:style/:filename"
   
   process_in_background :photo, processing_image_url: "/assets/images/processing.jpg"
 
