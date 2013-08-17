@@ -1,6 +1,7 @@
 - cache spot do 
   article id=dom_id(spot)
-    h1= spot.name.titleize
+    h1.spot-name= spot.name.titleize
+    = link_to spot.name.titleize, spot, class: 'spot-name'
 
     section.map = [spot.lat, spot.lng].join(', ')
 

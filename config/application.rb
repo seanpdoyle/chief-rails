@@ -17,6 +17,7 @@ module Chief
 
     config.x.bullet.enabled = false
     config.x.paperclip.s3 = false
+    config.x.workless.scaler = :local
     
     config.cache_store = :dalli_store
 

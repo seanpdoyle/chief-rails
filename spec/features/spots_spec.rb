@@ -13,7 +13,9 @@ feature 'Viewing Spots' do
 
     spots.each do |spot|
       within "##{dom_id(spot)}" do
-        expect(find('aside')).to have_content spot.name.titleize
+        all('.spot-name').each do |element|
+          expect(element).to have_content spot.name.titleize
+        end
       end
     end
   end
@@ -24,7 +26,7 @@ feature 'Viewing Spots' do
     visit spots_path
 
     within "##{dom_id(spot)}" do
-      find("aside").find("a").click
+      find("a.spot-name").click
 
       expect(current_path).to eq spot_path(spot)
     end

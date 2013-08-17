@@ -3,6 +3,7 @@ require Rails.root.join('config/initializers/smtp')
 Chief::Application.configure do
   config.x.bullet.enabled = true
   config.x.paperclip.s3 = true
+  config.x.workless.scaler = :heroku_cedar
 
   config.cache_store = :dalli_store
   
