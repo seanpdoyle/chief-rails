@@ -17,6 +17,7 @@ RSpec.configure do |config|
 
   config.include ActionView::RecordIdentifier, type: :feature
   config.include Features, type: :feature
+  config.include Photos
 
   config.fail_fast = true
   config.infer_base_class_for_anonymous_controllers = false
