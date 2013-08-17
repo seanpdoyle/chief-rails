@@ -1,10 +1,11 @@
-- cache spot do 
-  article id=dom_id(spot)
-    h1.spot-name= spot.name.titleize
-    = link_to spot.name.titleize, spot, class: 'spot-name'
+- cache spot do
+  article.spot id=dom_id(spot)
+    h1.spot-name= spot.titleize
+    = link_to spot.titleize, spot, class: 'spot-link'
+    
+    aside.actions
+      a.edit#edit_spot href=edit_spot_path(spot) Edit
 
-    section.map = [spot.lat, spot.lng].join(', ')
+    section.map= [spot.lat, spot.lng].join(', ')
 
     img src=spot.photo(:large) alt=spot.name
-
-    a.edit#edit_spot href=edit_spot_path(spot) Edit

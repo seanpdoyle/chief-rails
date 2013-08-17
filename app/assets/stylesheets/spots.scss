@@ -1,0 +1,45 @@
+.spots {
+
+}
+
+.spot {
+  @include clearfix;
+  @include outer-container;
+
+  position: relative;
+
+  img {
+    @include span-columns(4 of 12);
+
+    @include media($mobile) {
+      @include span-columns(6 of 6);
+      float: none;
+    }
+  }
+}
+
+.spots-index {
+  .actions,
+  .spot-name,
+  .map {
+    display: none;
+  }
+
+  img {
+    @extend .img-circle;
+  }
+
+  .spot-link {
+    float: right;
+  }
+
+  .spot {
+    float: left;
+  }
+}
+
+.spots-show {
+  .spot-link {
+    display: none;
+  }
+}

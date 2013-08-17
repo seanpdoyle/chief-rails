@@ -17,6 +17,18 @@
 
 require 'spec_helper'
 
+describe Spot do
+  [
+    :name,
+    :slug,
+    :lat,
+    :lng,
+    :photo
+  ].each do |message|
+    it { should respond_to(message) }
+  end
+end
+
 describe Spot, 'validations' do
   context 'with non-null location data' do
     before do
@@ -75,14 +87,12 @@ describe Spot, '#has_location?' do
   end
 end
 
-describe Spot do
-  [
-    :name,
-    :slug,
-    :lat,
-    :lng,
-    :photo
-  ].each do |message|
-    it { should respond_to(message) }
+describe Spot, '#titleize' do
+  it 'allows nil' do
+    expect(Spot.new.titleize).to be_nil
+  end
+
+  it 'delegates to #name' do
+    expect(Spot.new(name: 'lower case').titleize).to eq 'Lower Case'
   end
 end

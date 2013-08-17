@@ -43,6 +43,8 @@ class Spot < ActiveRecord::Base
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
+  delegate :titleize, to: :name, allow_nil: true
+
   def has_location?
     [lat, lng].all? &:present?
   end

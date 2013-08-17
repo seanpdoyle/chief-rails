@@ -14,7 +14,7 @@ feature 'Viewing Spots' do
     spots.each do |spot|
       within "##{dom_id(spot)}" do
         all('.spot-name').each do |element|
-          expect(element).to have_content spot.name.titleize
+          expect(element).to have_content spot.titleize
         end
       end
     end
@@ -54,7 +54,7 @@ feature 'Creating Spots' do
     expect(spot.lat).to be_within(1.0e-12).of(photo.lat)
     expect(spot.lng).to be_within(1.0e-12).of(photo.lng)
 
-    expect(page).to have_content spot.name.titleize
+    expect(page).to have_content spot.titleize
     expect_photo spot.photo(:large), spot.name
   end
 end
