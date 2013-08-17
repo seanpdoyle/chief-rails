@@ -47,8 +47,8 @@ feature 'Creating Spots' do
     expect(spot.name).to eq 'new spot'
     expect(spot.slug).to eq 'new-spot'
     expect(spot.photo).not_to be_nil
-    expect(spot.lat).to eq photo.lat
-    expect(spot.lng).to eq photo.lng
+    expect(spot.lat).to be_within(1.0e-12).of(photo.lat)
+    expect(spot.lng).to be_within(1.0e-12).of(photo.lng)
 
     expect(current_path).to eq spot_path(spot)
 

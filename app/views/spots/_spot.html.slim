@@ -2,6 +2,8 @@
   article id=dom_id(spot)
     h1= spot.name.titleize
 
+    section.map = [spot.lat, spot.lng].join(', ')
+
     img src=spot.photo(:large) alt=spot.name
 
     a.edit#edit_spot href=edit_spot_path(spot) Edit

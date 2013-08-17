@@ -30,6 +30,8 @@ module Chief
       generate.view_specs false
     end
 
+    config.autoload_paths << File.join(Rails.root, 'lib', 'paperclip_processors')
+
     %w(services).each do |dir|
       config.autoload_paths << File.join(Rails.root, 'app', dir)
     end

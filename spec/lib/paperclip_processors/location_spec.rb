@@ -1,13 +1,14 @@
 require 'spec_helper'
 
-describe Paperclip::Location do
+describe Location do
   subject { described_class.new nil }
   it { should be_a Paperclip::Processor }
 end
 
-describe Paperclip::Location, '#make' do
+describe Location, '#make' do
   let(:model) { double :model }
-  subject { described_class.new(file, {}, model) }
+  let(:attachment) { double :attachment, instance: model }
+  subject { described_class.new(file, {}, attachment) }
 
   it "returns the original file, unmodified" do
     file = File.open(Photos::WITHOUT_EXIF.path)
@@ -17,25 +18,26 @@ describe Paperclip::Location, '#make' do
   context 'given a file with EXIF GPS data' do
     let(:file){ File.open(Photos::WITH_EXIF.path) }
 
-    it "updates the `lat` & `lng` attributes on the Attachment's model" do
-      arguments = {
-        lat: Photos::WITH_EXIF.lat,
-        lng: Photos::WITH_EXIF.lng
-      }
-
-      expect(model).to receive(:update!).with(arguments)
-
+    after do
       subject.make
+    end
+
+    it "sets the `lat` and `lng` on the Attachment's model" do
+      expect(model).to receive(:lat=).with(Photos::WITH_EXIF.lat)
+      expect(model).to receive(:lng=).with(Photos::WITH_EXIF.lng)
     end
   end
 
   context 'given a file without EXIF' do
     let(:file){ File.open(Photos::WITHOUT_EXIF.path) }
 
-    it 'does not modify the Attachment model' do
-      expect(model).not_to receive(:update!)
-
+    after do
       subject.make
+    end
+
+    it 'does not modify the Attachment model' do
+      expect(model).not_to receive(:lat=)
+      expect(model).not_to receive(:lng=)
     end
   end
 end
