@@ -18,12 +18,19 @@
 require 'spec_helper'
 
 describe Spot, 'validations' do
-  it { should validate_numericality_of(:lat).is_less_than_or_equal_to(90.0) }
-  it { should validate_numericality_of(:lat).is_greater_than_or_equal_to(-90.0) }
+  context 'with non-null location data' do
+    before do
+      subject.lat = -91
+      subject.lng = -181
+    end
 
-  it { should validate_numericality_of(:lng).is_less_than_or_equal_to(180.0) }
-  it { should validate_numericality_of(:lng).is_greater_than_or_equal_to(-180.0) }
+    it { should validate_numericality_of(:lat).is_less_than_or_equal_to(90.0) }
+    it { should validate_numericality_of(:lat).is_greater_than_or_equal_to(-90.0) }
 
+    it { should validate_numericality_of(:lng).is_less_than_or_equal_to(180.0) }
+    it { should validate_numericality_of(:lng).is_greater_than_or_equal_to(-180.0) }
+  end
+  
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name) }
 

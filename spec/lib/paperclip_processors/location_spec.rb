@@ -11,12 +11,12 @@ describe Location, '#make' do
   subject { described_class.new(file, {}, attachment) }
 
   it "returns the original file, unmodified" do
-    file = File.open(Photos::WITHOUT_EXIF.path)
+    file = File.new(Photos::WITHOUT_EXIF.path)
     expect(described_class.new(file).make).to be file
   end
 
   context 'given a file with EXIF GPS data' do
-    let(:file){ File.open(Photos::WITH_EXIF.path) }
+    let(:file){ File.new(Photos::WITH_EXIF.path) }
 
     after do
       subject.make
@@ -29,7 +29,7 @@ describe Location, '#make' do
   end
 
   context 'given a file without EXIF' do
-    let(:file){ File.open(Photos::WITHOUT_EXIF.path) }
+    let(:file){ File.new(Photos::WITHOUT_EXIF.path) }
 
     after do
       subject.make
