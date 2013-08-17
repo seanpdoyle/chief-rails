@@ -39,13 +39,16 @@ feature 'Creating Spots' do
   end
 
   scenario 'from the #new_spot form' do
-    create_spot name: 'new spot'
+    photo = Photos::WITH_EXIF
+    create_spot name: 'new spot', photo: photo
 
     spot = Spot.last
 
     expect(spot.name).to eq 'new spot'
     expect(spot.slug).to eq 'new-spot'
     expect(spot.photo).not_to be_nil
+    expect(spot.lat).to eq photo.lat
+    expect(spot.lng).to eq photo.lng
 
     expect(current_path).to eq spot_path(spot)
 
