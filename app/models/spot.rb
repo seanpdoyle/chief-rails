@@ -29,7 +29,7 @@ class Spot < ActiveRecord::Base
                     url: "/system/:attachment/:id/:style/:filename",
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename"
   
-  process_in_background :photo
+  process_in_background :photo, processing_image_url: "/assets/images/processing.jpg"
 
   validates_numericality_of :lat, less_than_or_equal_to: 90.0,
                                   greater_than_or_equal_to: -90.0,
@@ -48,7 +48,7 @@ class Spot < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
   def has_location?
-    lat.present? && lng.present?
+    [lat, lng].all?(&:present?)
   end
 
   def slug_candidates

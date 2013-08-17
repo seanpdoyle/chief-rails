@@ -44,13 +44,15 @@ feature 'Creating Spots' do
 
     spot = Spot.last
 
+    expect(current_path).to eq spot_path(spot)
+
     expect(spot.name).to eq 'new spot'
     expect(spot.slug).to eq 'new-spot'
-    expect(spot.photo).not_to be_nil
+    
+    spot.photo.reprocess_without_delay!
+
     expect(spot.lat).to be_within(1.0e-12).of(photo.lat)
     expect(spot.lng).to be_within(1.0e-12).of(photo.lng)
-
-    expect(current_path).to eq spot_path(spot)
 
     expect(page).to have_content spot.name.titleize
     expect(find_photo(spot.photo(:large), spot.name)).not_to be_nil

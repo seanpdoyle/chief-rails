@@ -1,8 +1,8 @@
 class Location < Paperclip::Processor
   def make
     if can_process?
-      attachment.instance.lat = gps.latitude
-      attachment.instance.lng = gps.longitude
+      model.lat = gps.latitude
+      model.lng = gps.longitude
     end
     file
   end
@@ -13,6 +13,12 @@ class Location < Paperclip::Processor
     end
 
     def can_process?
-      gps.present? && attachment.present? && attachment.instance.present?
+      gps.present? && model.present?
+    end
+
+    def model
+      if attachment.present?
+        @model ||= attachment.instance
+      end
     end
 end
