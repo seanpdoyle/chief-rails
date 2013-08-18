@@ -19,6 +19,8 @@ class Spot < ActiveRecord::Base
   extend FriendlyId
   extend FriendlyId::Finders
 
+  acts_as_mappable
+
   ALLOWED_PHOTOS = %w(image/jpeg image/png)
 
   friendly_id :slug_candidates, use: :slugged
@@ -43,8 +45,12 @@ class Spot < ActiveRecord::Base
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
+  def location
+    [lat, lng]
+  end
+
   def has_location?
-    [lat, lng].all? &:present?
+    location.all?(&:present?)
   end
 
   def slug_candidates

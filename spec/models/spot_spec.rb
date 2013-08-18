@@ -17,6 +17,10 @@
 
 require 'spec_helper'
 
+describe Spot do
+  it { should be_a(Geokit::ActsAsMappable) }
+end
+
 describe Spot, 'validations' do
   context 'with non-null location data' do
     before do
@@ -47,6 +51,12 @@ describe Spot, 'validations' do
 
   it { should validate_presence_of(:slug) }
   it { should validate_uniqueness_of(:slug) }
+end
+
+describe Spot, '#location' do
+  it 'returns an array indexed latitude first, longitude second' do
+    expect(Spot.new(lat: 5, lng: 10).location).to eq [5, 10]
+  end
 end
 
 describe Spot, '#has_location?' do
