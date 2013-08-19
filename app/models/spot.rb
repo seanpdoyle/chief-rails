@@ -7,6 +7,8 @@
 #  slug               :string(255)
 #  lat                :float
 #  lng                :float
+#  photo_processing   :boolean          default(FALSE), not null
+#  location_locked    :boolean          default(FALSE), not null
 #  created_at         :datetime
 #  updated_at         :datetime
 #  photo_file_name    :string(255)
@@ -51,7 +53,7 @@ class Spot < ActiveRecord::Base
                           .by_distance(origin: location) }
 
   def nearby(range_in_miles = 5)
-    Spot.near(self, range_in_miles)
+    @nearby ||= Spot.near(self, range_in_miles)
   end
 
   def location

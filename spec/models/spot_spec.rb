@@ -7,6 +7,8 @@
 #  slug               :string(255)
 #  lat                :float
 #  lng                :float
+#  photo_processing   :boolean          default(FALSE), not null
+#  location_locked    :boolean          default(FALSE), not null
 #  created_at         :datetime
 #  updated_at         :datetime
 #  photo_file_name    :string(255)
@@ -30,19 +32,21 @@ describe Spot, 'scopes' do
 end
 
 describe Spot, '#nearby' do
-  let(:spot) { create :spot, lat: 1, lng: 1 }
-  let(:nearby) do
+  let!(:spot) { create :spot, lat: 1, lng: 1 }
+  let!(:nearby) do
     location = spot.endpoint(0, 1)
     create :spot, lat: location.lat, lng: location.lng
   end
-  let(:not_nearby) do
+  let!(:not_nearby) do
     location = spot.endpoint(0, 10)
     create :spot, lat: location.lat, lng: location.lng
   end
 
   it 'returns nearby spots within 5 miles, sorted by proximity, excluding the spot itself' do
     expect(spot.nearby).to include(nearby)
-    expect(spot.nearby).not_to include(spot, not_nearby)
+    [spot, not_nearby].each do |excluded|
+      expect(spot.nearby).not_to include(excluded)
+    end
   end
 end
 
