@@ -10,6 +10,14 @@ module Features
     end
   end
 
+  def have_nearby_spot(nearby)
+    have_css ".spots-nearby .spot##{dom_id(nearby)}"
+  end
+
+  def nearby_spots
+    all('.spots-nearby .spot')
+  end
+
   def create_spot(args = {})
     within '#new_spot' do
       fill_in 'spot_name', with: args[:name]
