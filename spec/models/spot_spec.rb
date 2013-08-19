@@ -21,6 +21,16 @@ describe Spot do
   it { should be_a(Geokit::ActsAsMappable) }
 end
 
+describe Spot, '#nearby' do
+  let(:spot) { create :spot, lat: 5, lng: 5 }
+  let(:nearby) { create :spot, lat: 6, lng: 6 }
+
+  it 'returns nearby spots sorted by proximity, excluding the spot itself' do
+    expect(spot.nearby).to include(nearby)
+    expect(spot.nearby).not_to include(spot)
+  end
+end
+
 describe Spot, 'validations' do
   context 'with non-null location data' do
     before do

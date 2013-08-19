@@ -45,6 +45,11 @@ class Spot < ActiveRecord::Base
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
+
+  def nearby
+    Spot.where.not(id: id).by_distance(origin: location)
+  end
+
   def location
     [lat, lng]
   end

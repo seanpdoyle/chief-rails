@@ -1,1 +1,4 @@
 = render @spot
+
+section.spots-nearby
+  = render @spot.nearby.limit(5)
