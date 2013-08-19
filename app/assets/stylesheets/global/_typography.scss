@@ -1,3 +1,12 @@
+@mixin responsive-font-size($size-in-ems) {
+  $size: em($size-in-ems);
+  font-size: $size;
+
+  @include media($mobile) {
+    font-size: golden-ratio($size,  -1);
+  }
+}
+
 body {
   color: $base-font-color;
   font-family: $base-font-family;
@@ -13,27 +22,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: em(42);
+  @include responsive-font-size(42);
 }
 
 h2 {
-  font-size: em(36);
+  @include responsive-font-size(36);
 }
 
 h3 {
-  font-size: em(32);
+  @include responsive-font-size(32);
 }
 
 h4 {
-  font-size: em(24);
+  @include responsive-font-size(24);
 }
 
 h5 {
-  font-size: em(18);
+  @include responsive-font-size(18);
 }
 
 h6 {
-  font-size: $base-font-size;
+  @include responsive-font-size(1);
 }
 
 p {
@@ -44,11 +53,12 @@ p {
 
 a:link, a:visited {
   color: $base-link-color;
-  text-decoration: underline;
+  text-decoration: none;
   @include transition(color 0.1s linear);
 
   &:hover {
     color: $hover-link-color;
+    text-decoration: underline;
   }
 
   &:active, &:focus {

@@ -2,6 +2,60 @@
 
 }
 
+.spot-row {
+  @extend .clearfix;
+  @include outer-container;
+  @include span-columns(12);
+  @include pad(default);
+  position: relative;
+
+  border-bottom: {
+    width: 1px;
+    color: #CCC;
+    style: solid;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  @include media($mobile) {
+    @include span-columns(6);
+  }
+
+  img {
+    @extend .img-circle;
+
+    @include span-columns(1 of 12);
+
+    float: left;
+
+    @include media($mobile) {
+      @include span-columns(1 of 6);
+    }
+  }
+
+  .actions {
+    display: none; 
+  }
+
+  .spot-link,
+  .spot-name {
+    @include responsive-font-size(28);
+    float: right;
+  }
+}
+
+.spots-nearby {
+  .spot {
+    @extend .spot-row;
+  }
+
+  .spot-name {
+    display: none;
+  }
+}
+
 .spot {
   @include clearfix;
   @include outer-container;
@@ -19,22 +73,17 @@
 }
 
 .spots-index {
+  .spot {
+    @extend .spot-row;
+  }
   .actions,
   .spot-name,
   .map {
     display: none;
   }
 
-  img {
-    @extend .img-circle;
-  }
-
   .spot-link {
     float: right;
-  }
-
-  .spot {
-    float: left;
   }
 }
 
