@@ -1,12 +1,18 @@
 .spots {
+  @include outer-container;
+  @include span-columns(12);
 
+  @include media($mobile) {
+    @include span-columns(6);
+  }
 }
 
 .spot-row {
   @extend .clearfix;
-  @include outer-container;
+
   @include span-columns(12);
   @include pad(default);
+  
   position: relative;
 
   border-bottom: {
