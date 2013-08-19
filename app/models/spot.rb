@@ -7,6 +7,8 @@
 #  slug               :string(255)
 #  lat                :float
 #  lng                :float
+#  photo_processing   :boolean          default(FALSE), not null
+#  location_locked    :boolean          default(FALSE), not null
 #  created_at         :datetime
 #  updated_at         :datetime
 #  photo_file_name    :string(255)
@@ -18,6 +20,8 @@
 class Spot < ActiveRecord::Base
   extend FriendlyId
   extend FriendlyId::Finders
+
+  acts_as_mappable
 
   ALLOWED_PHOTOS = %w(image/jpeg image/png)
 
@@ -43,8 +47,21 @@ class Spot < ActiveRecord::Base
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
+  scope :near, ->(spot, range_in_miles = 5) {
+    location = spot.location
+    where.not(id: spot.id).within(range_in_miles, origin: location)
+                          .by_distance(origin: location) }
+
+  def nearby(range_in_miles = 5)
+    @nearby ||= Spot.near(self, range_in_miles)
+  end
+
+  def location
+    [lat, lng]
+  end
+
   def has_location?
-    [lat, lng].all? &:present?
+    location.all?(&:present?)
   end
 
   def slug_candidates

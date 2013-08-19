@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/geokit/geokit-rails.git
+  revision: 781c4dc62d3b044196efbfad269d4780e6afbe6b
+  branch: rails4
+  specs:
+    geokit-rails (2.0.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
+
+GIT
   remote: git://github.com/josevalim/inherited_resources.git
   revision: ae1516a3f1a01f98beac3334f76831a1c793c521
   specs:
@@ -132,6 +141,8 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.4)
     friendly_id (5.0.0.beta1)
+    geokit (1.6.5)
+      multi_json
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -326,6 +337,7 @@ DEPENDENCIES
   flutie
   foreman
   friendly_id (= 5.0.0.beta1)
+  geokit-rails!
   high_voltage
   inherited_resources!
   jquery-rails
