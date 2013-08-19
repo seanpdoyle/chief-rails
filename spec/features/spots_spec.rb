@@ -33,6 +33,30 @@ feature 'Viewing Spots' do
   end
 end
 
+feature 'Nearest Spots' do
+  let(:spot) { create :spot, lat: 1, lng: 1 }
+  let!(:spots) do
+    6.times.map do |offset_in_miles|
+      nearby = spot.endpoint(90, offset_in_miles)
+      create :spot, lat: nearby.lat, lng: nearby.lng
+    end
+  end
+
+  scenario 'viewing a spot displays the 5 closest spots, closest to furthest' do
+    visit spot_path(spot)
+
+    expect(nearby_spots.count).to be <= 5
+
+    spots.first(5).each do |nearby|
+      expect(page).to have_nearby_spot(nearby)
+    end
+
+    expect(page).not_to have_nearby_spot(spots.last)
+
+    expect(page).not_to have_nearby_spot(spot)
+  end
+end
+
 feature 'Creating Spots' do
   before do
     visit spots_path

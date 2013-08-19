@@ -5,7 +5,8 @@ class CreateSpots < ActiveRecord::Migration
       t.string :slug
       t.float :lat
       t.float :lng
-      t.boolean :photo_processing
+      t.boolean :photo_processing, default: false, null: false
+      t.boolean :location_locked, default: false, null: false
 
       t.timestamps
     end
