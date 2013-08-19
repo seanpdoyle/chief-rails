@@ -21,13 +21,28 @@ describe Spot do
   it { should be_a(Geokit::ActsAsMappable) }
 end
 
-describe Spot, '#nearby' do
-  let(:spot) { create :spot, lat: 5, lng: 5 }
-  let(:nearby) { create :spot, lat: 6, lng: 6 }
+describe Spot, 'scopes' do
+  [
+    :near
+  ].each do |scope|
+    it { expect(described_class).to respond_to scope }
+  end
+end
 
-  it 'returns nearby spots sorted by proximity, excluding the spot itself' do
+describe Spot, '#nearby' do
+  let(:spot) { create :spot, lat: 1, lng: 1 }
+  let(:nearby) do
+    location = spot.endpoint(0, 1)
+    create :spot, lat: location.lat, lng: location.lng
+  end
+  let(:not_nearby) do
+    location = spot.endpoint(0, 10)
+    create :spot, lat: location.lat, lng: location.lng
+  end
+
+  it 'returns nearby spots within 5 miles, sorted by proximity, excluding the spot itself' do
     expect(spot.nearby).to include(nearby)
-    expect(spot.nearby).not_to include(spot)
+    expect(spot.nearby).not_to include(spot, not_nearby)
   end
 end
 

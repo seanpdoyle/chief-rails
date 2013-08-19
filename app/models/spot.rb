@@ -45,9 +45,13 @@ class Spot < ActiveRecord::Base
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
+  scope :near, ->(spot, range_in_miles = 5) {
+    location = spot.location
+    where.not(id: spot.id).within(range_in_miles, origin: location)
+                          .by_distance(origin: location) }
 
-  def nearby
-    Spot.where.not(id: id).by_distance(origin: location)
+  def nearby(range_in_miles = 5)
+    Spot.near(self, range_in_miles)
   end
 
   def location
