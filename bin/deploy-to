@@ -11,4 +11,4 @@ fi
 
 git push $1 master
 
-heroku run rake db:migrate paperclip:refresh:missing_styles --remote $1
+heroku run RACK_ENV=$1 rake db:migrate --remote $1
