@@ -15,6 +15,14 @@ GIT
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
 
+GIT
+  remote: git://github.com/seanpdoyle/paperclip-location.git
+  revision: 13efd0d9dd1b26dd385b86260df7a71677b3ef4b
+  specs:
+    paperclip-location (0.0.1)
+      exifr
+      paperclip (~> 3.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -348,6 +356,7 @@ DEPENDENCIES
   neat
   newrelic_rpm (>= 3.5.7)
   paperclip
+  paperclip-location!
   pg
   rack-mini-profiler
   rack-timeout
