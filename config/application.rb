@@ -5,7 +5,6 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -30,8 +29,6 @@ module Chief
       generate.test_framework :rspec
       generate.view_specs false
     end
-
-    config.autoload_paths << File.join(Rails.root, 'lib', 'paperclip_processors')
 
     %w(services).each do |dir|
       config.autoload_paths << File.join(Rails.root, 'app', dir)
