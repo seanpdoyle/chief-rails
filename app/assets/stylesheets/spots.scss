@@ -52,6 +52,23 @@
   }
 }
 
+.spot-distance {
+  @include responsive-font-size(20);
+
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  i {
+    margin: {
+      left: 3px;
+      right: 3px;
+    }
+  }
+}
+
 .spots-nearby {
   .spot {
     @extend .spot-row;
@@ -59,6 +76,21 @@
 
   .spot-name {
     display: none;
+  }
+
+  .spot-distance {
+    position: absolute;
+    bottom: 15%;
+    right: 2%;
+
+    @include media($tablet) {
+      bottom: 10%;
+      right: 1%;
+    }
+
+    @include media($mobile) {
+      bottom: 5%;
+    }
   }
 }
 
