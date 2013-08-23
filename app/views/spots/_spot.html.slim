@@ -3,6 +3,8 @@
     h1.spot-name= spot.titleize
     = link_to spot.titleize, spot, class: 'spot-link'
 
+    = directions_link_to 'Get Directions', spot, class: 'directions-to'
+
     aside.spot-distance
     
     aside.actions

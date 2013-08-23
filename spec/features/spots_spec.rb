@@ -6,6 +6,14 @@ feature 'Viewing Spots' do
     expect(page).to have_content /no spots/i
   end
 
+  scenario 'provides a link for directions' do
+    spot = create :spot
+
+    visit spot_path(spot)
+    
+    expect(directions_to(spot)[:href]).to match /daddr=#{spot.lat},#{spot.lng}/i
+  end
+
   scenario 'displays the spots' do
     spots = create_list :spot, 2
 

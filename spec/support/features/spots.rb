@@ -10,6 +10,10 @@ module Features
     end
   end
 
+  def directions_to(spot)
+    find "##{dom_id(spot)} .directions-to"
+  end
+
   def have_nearby_spot(nearby)
     have_css ".spots-nearby .spot##{dom_id(nearby)}"
   end
