@@ -9,6 +9,8 @@ if [ -z "$1" ]; then
   return $FAIL
 fi
 
-git push $1 master
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+git push $1 $BRANCH:master
 
 heroku run RACK_ENV=$1 rake db:migrate paperclip:refresh:missing_styles --remote $1
