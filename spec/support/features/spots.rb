@@ -11,7 +11,7 @@ module Features
   end
 
   def directions_to(spot)
-    find "##{dom_id(spot)} .directions-to"
+    find "##{dom_id(spot)} a[rel=directions]"
   end
 
   def have_nearby_spot(nearby)
