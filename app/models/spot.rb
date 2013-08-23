@@ -31,6 +31,9 @@ class Spot < ActiveRecord::Base
                     processors: [:thumbnail, :location],
                     styles: { large: '600x600#' }
 
+
+  process_in_background :photo, processing_image_url: '/assets/processing.gif'
+
   validates_numericality_of :lat, less_than_or_equal_to: 90.0,
                                   greater_than_or_equal_to: -90.0,
                                   if: :has_location?
