@@ -51,14 +51,15 @@ class NearbyDecorator
       $(nearby).find('.spot-distance').text(distanceText)
 
 $ ->
-  spot        = $($('.spot').first())
-  away        = spot.find('.spot-distance')
-  spotName    = spot.find('.spot-name').text()
-  nearbySpots = $('.spots-nearby .spot')
+  if google?.maps?.geometry?
+    spot        = $($('.spot').first())
+    away        = spot.find('.spot-distance')
+    spotName    = spot.find('.spot-name').text()
+    nearbySpots = $('.spots-nearby .spot')
 
-  new FromDecorator(spot).setDistanceText(away)
+    new FromDecorator(spot).setDistanceText(away)
 
-  new NearbyDecorator(spot, nearbySpots).setNearbyText(spotName)
+    new NearbyDecorator(spot, nearbySpots).setNearbyText(spotName)
 
 
 
