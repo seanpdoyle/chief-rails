@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 Chief::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.x.bullet.enabled = true
