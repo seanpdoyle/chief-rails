@@ -1,8 +1,9 @@
 Paperclip.registered_attachments_styles_path = 'config/paperclip_attachments.yml'
-Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
 
 if Rails.configuration.x.paperclip.s3
   Paperclip::Attachment.default_options.tap do |options|
+    options[:url] = ':s3_domain_url'
     options[:storage] = :s3
     options[:s3_protocol] = ''
     options[:s3_credentials] = {
