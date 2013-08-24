@@ -29,8 +29,10 @@ class FromDecorator
           position.coords.longitude
         )
         distance = google.maps.geometry.spherical.computeDistanceBetween(toLocation(@node), other)
-
-        name.text("#{toMiles(distance)} miles away")
+        if isNaN(distance)
+          name.remove()
+        else
+          name.text("#{toMiles(distance)} miles away")
       , (errors) ->
         name.remove()
 
@@ -46,16 +48,26 @@ class NearbyDecorator
     for nearby in @nearbySpots
       distance  = calculator.calculate($(nearby))
 
-      distanceText = "#{toMiles(distance)} miles from #{fromText}"
+      if isNaN(distance)
+        nearby.remove()
+      else
+        distanceText = "#{toMiles(distance)} miles from #{fromText}"
 
-      $(nearby).find('.spot-distance').text(distanceText)
+        $(nearby).find('.spot-distance').text(distanceText)
 
 $ ->
   if google?.maps?.geometry?
-    spot        = $($('.spot').first())
+    index = $('.spots-index')
+    for spot in index.find('.spot')
+      spot = $(spot)
+      new FromDecorator(spot).setDistanceText(spot.find('.spot-distance'))
+
+    show = $('.spots-show')
+
+    spot        = $(show.find('.spot').first())
     away        = spot.find('.spot-distance')
     spotName    = spot.find('.spot-name').text()
-    nearbySpots = $('.spots-nearby .spot')
+    nearbySpots = show.find('.spots-nearby .spot')
 
     new FromDecorator(spot).setDistanceText(away)
 
