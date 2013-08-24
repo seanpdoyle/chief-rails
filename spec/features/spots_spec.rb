@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'debugger'
 
 feature 'Viewing Spots' do
   scenario 'displays the empty prompt when spots are missing' do
@@ -72,9 +73,7 @@ feature 'Creating Spots' do
 
   scenario 'from the #new_spot form' do
     photo = Photos::WITH_EXIF
-    create_spot name: 'new spot', photo: photo
-
-    spot = Spot.last
+    spot = create_spot name: 'new spot', photo: photo
 
     expect(current_path).to eq spot_path(spot)
 
