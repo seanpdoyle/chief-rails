@@ -6,6 +6,9 @@ if Rails.configuration.x.paperclip.s3
     options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
     options[:storage] = :s3
     options[:s3_protocol] = ''
+    options[:s3_headers] = Proc.new do |attachment|
+      {'Expires' => 1.year.from(attachment.updated_at).httpdate}
+    end
     options[:s3_credentials] = {
       bucket: ENV['AWS_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
