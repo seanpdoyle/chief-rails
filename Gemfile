@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'custom_configuration'
 gem 'dalli'
 gem 'delayed_job_active_record', '>= 4.0.0'
+gem 'delayed_paperclip'
 gem 'email_validator'
 gem 'exifr'
 gem 'flutie'
@@ -45,6 +46,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
   gem 'reek'

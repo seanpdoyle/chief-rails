@@ -1,6 +1,6 @@
 module Features
   def spot(name)
-    find('.spot aside', text: name)
+    find('.spot .spot-name', text: name)
   end
 
   def add_spot_obstacle(obstacle)
@@ -22,11 +22,16 @@ module Features
     all('.spots-nearby .spot')
   end
 
-  def create_spot(args = {})
+  def create_spot(options = {})
     within '#new_spot' do
-      fill_in 'spot_name', with: args[:name]
-      attach_file 'spot_photo', args.fetch(:photo, Photos::WITH_EXIF).path
+      fill_in 'spot_name', with: options[:name]
+      attach_file 'spot_photo', options.fetch(:photo, Photos::WITH_EXIF).path
       submit_form
+    end
+
+    Spot.last.tap do |spot|
+      spot.photo.reprocess_without_delay!
+      spot.reload
     end
   end
 end
