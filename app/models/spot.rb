@@ -27,9 +27,11 @@ class Spot < ActiveRecord::Base
 
   friendly_id :slug_candidates, use: :slugged
 
-  has_attached_file :photo,
-                    processors: [:thumbnail, :location],
-                    styles: { large: '600x600#' }
+  has_attached_file :photo, styles: { large: '600x600#' },
+                    processors: [:thumbnail, :location]
+
+
+  process_in_background :photo
 
   validates_numericality_of :lat, less_than_or_equal_to: 90.0,
                                   greater_than_or_equal_to: -90.0,

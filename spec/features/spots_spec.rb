@@ -72,9 +72,7 @@ feature 'Creating Spots' do
 
   scenario 'from the #new_spot form' do
     photo = Photos::WITH_EXIF
-    create_spot name: 'new spot', photo: photo
-
-    spot = Spot.last
+    spot = create_spot name: 'new spot', photo: photo
 
     expect(current_path).to eq spot_path(spot)
 
