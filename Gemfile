@@ -46,7 +46,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger'  
+  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
   gem 'reek'

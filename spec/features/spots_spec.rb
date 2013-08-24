@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'debugger'
 
 feature 'Viewing Spots' do
   scenario 'displays the empty prompt when spots are missing' do
