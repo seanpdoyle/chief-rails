@@ -7,7 +7,7 @@ if Rails.configuration.x.paperclip.s3
     options[:storage] = :s3
     options[:s3_protocol] = ''
     options[:s3_headers] = Proc.new do |attachment|
-      {'Expires' => attachment.updated_at.next_year.httpdate}
+      {'Expires' => (attachment.updated_at || Time.now).next_year.httpdate}
     end
     options[:s3_credentials] = {
       bucket: ENV['AWS_BUCKET'],

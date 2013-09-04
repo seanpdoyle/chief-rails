@@ -29,9 +29,8 @@ module Features
       submit_form
     end
 
-    Spot.last.tap do |spot|
+    Spot.find_by(slug: name.parameterize).tap do |spot|
       spot.photo.reprocess_without_delay!
-      spot.reload
     end
   end
 end

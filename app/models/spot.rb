@@ -19,17 +19,15 @@
 
 class Spot < ActiveRecord::Base
   extend FriendlyId
-  extend FriendlyId::Finders
 
   acts_as_mappable
 
   ALLOWED_PHOTOS = %w(image/jpeg image/png)
 
-  friendly_id :slug_candidates, use: :slugged
+  friendly_id :slug_candidates, use: [:slugged, :finders]
 
   has_attached_file :photo, styles: { large: '600x600#' },
                     processors: [:thumbnail, :location]
-
 
   process_in_background :photo
 
@@ -70,8 +68,7 @@ class Spot < ActiveRecord::Base
 
   def slug_candidates
     [
-      :name,
-      [:id, :name]
+      :name
     ]
   end
 end
