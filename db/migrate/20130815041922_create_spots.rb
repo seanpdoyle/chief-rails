@@ -1,6 +1,6 @@
 class CreateSpots < ActiveRecord::Migration
   def change
-    create_table :spots do |t|
+    create_table :spots, id: :uuid do |t|
       t.string :name
       t.string :slug
       t.float :lat
