@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env)
 module Chief
   class Application < Rails::Application
     config.active_record.default_timezone = :utc
+    config.active_record.schema_format = :sql
 
     config.x.bullet.enabled = false
     config.x.paperclip.s3 = true

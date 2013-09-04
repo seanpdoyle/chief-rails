@@ -22,10 +22,10 @@ module Features
     all('.spots-nearby .spot')
   end
 
-  def create_spot(options = {})
+  def create_spot(name: nil, photo: Photos::WITH_EXIF)
     within '#new_spot' do
-      fill_in 'spot_name', with: options[:name]
-      attach_file 'spot_photo', options.fetch(:photo, Photos::WITH_EXIF).path
+      fill_in 'spot_name', with: name
+      attach_file 'spot_photo', photo.path
       submit_form
     end
 
