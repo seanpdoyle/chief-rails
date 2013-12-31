@@ -6,8 +6,12 @@ if Rails.configuration.x.paperclip.s3
     options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
     options[:storage] = :s3
     options[:s3_protocol] = ''
-    options[:s3_headers] = Proc.new do |attachment|
-      {'Expires' => attachment.updated_at.next_year.httpdate}
+    options[:s3_headers] = -> attachment do
+      {}.tap do |headers|
+        if attachment
+          headers["Expires"] = (attachment.updated_at || Time.now).next_year.httpdate
+        end
+      end
     end
     options[:s3_credentials] = {
       bucket: ENV['AWS_BUCKET'],
