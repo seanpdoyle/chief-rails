@@ -27,8 +27,9 @@ class Spot < ActiveRecord::Base
 
   friendly_id :slug_candidates, use: :slugged
 
-  has_attached_file :photo, styles: { small: '400x400#', large: '800x800#' },
-                    processors: [:thumbnail, :location]
+  has_attached_file :photo, styles: {
+    small: '400x400#', medium: '600x600#', large: '1000x1000#'
+  }, processors: [:thumbnail, :location]
 
   process_in_background :photo
 

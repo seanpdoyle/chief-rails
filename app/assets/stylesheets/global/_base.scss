@@ -10,3 +10,7 @@
 html {
   overflow-y: scroll;
 }
+
+a.disabled {
+  cursor: default;
+}

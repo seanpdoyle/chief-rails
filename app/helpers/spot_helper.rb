@@ -7,7 +7,8 @@ module SpotHelper
 
     data = {
       media: spot.photo.url(:small),
-      media600: spot.photo.url(:large)
+      media480: spot.photo.url(:medium),
+      media800: spot.photo.url(:large)
     }.merge(data_arguments)
 
     id = dom_id(spot) + "_picture"

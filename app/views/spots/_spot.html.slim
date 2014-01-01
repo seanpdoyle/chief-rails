@@ -7,8 +7,9 @@
     aside.spot-distance Calculating distance...
 
     aside.actions
-      a.edit#edit_spot href=edit_spot_path(spot) Edit
+      = link_to "Edit", [:edit, spot], class: :edit, id: "edit_spot"
 
     section.map
 
-    = spot_image_tag spot
+    = link_to spot, data: { behavior: "link_to_unless_current" } do
+      = spot_image_tag spot
