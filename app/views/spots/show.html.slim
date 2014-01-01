@@ -1,5 +1,7 @@
 = render @spot
 
+= link_to 'Back to Spots', spots_path
+
 section.spots-nearby
   h1 Nearby Spots
   = render @spot.nearby.limit(5)

@@ -2,7 +2,6 @@
   article.spot id=dom_id(spot) data-latitude=spot.lat data-longitude=spot.lng
     h1.spot-name= spot.titleize
     = link_to spot.titleize, spot, class: 'spot-link'
-
     = directions_link_to 'Get Directions', spot, class: 'directions-to'
 
     aside.spot-distance Calculating distance...
