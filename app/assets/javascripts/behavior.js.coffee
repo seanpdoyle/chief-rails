@@ -4,5 +4,5 @@ $ ->
   for link in $("[data-behavior~=link_to_unless_current")
     if window.location.href.match link.href
       $(link).addClass("disabled")
-      $(link).on "click touchmove", (e)->
+      $(link).on "click touchstart", (e)->
         e.preventDefault()
