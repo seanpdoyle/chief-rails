@@ -12,6 +12,7 @@ if Rails.configuration.x.paperclip.s3
       end
     end
     options[:url] = ":s3_domain_url"
+    options[:path] = "/:class/:attachment/:id_partition/:style/:filename"
     options[:s3_credentials] = {
       bucket: ENV["AWS_BUCKET"],
       access_key_id: ENV["AWS_ACCESS_KEY_ID"],
