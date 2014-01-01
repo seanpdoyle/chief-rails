@@ -1,0 +1,2 @@
+$ ->
+  $("[data-behavior~=picture]").picture()

@@ -4,6 +4,7 @@ ruby '2.0.0'
 
 gem 'actionpack-page_caching'
 gem 'airbrake'
+gem 'aws-sdk'
 gem 'bourbon'
 gem 'clearance'
 gem 'coffee-rails'
@@ -66,7 +67,6 @@ end
 
 group :staging, :production do
   gem 'asset_sync'
-  gem 'aws-sdk'
   gem 'memcachier'
   gem 'newrelic_rpm', '>= 3.5.7'
   gem 'rails_12factor'

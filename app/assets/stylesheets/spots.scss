@@ -12,7 +12,7 @@
 
   @include span-columns(12);
   @include pad(default);
-  
+
   position: relative;
 
   border-bottom: {
@@ -42,7 +42,7 @@
   }
 
   .actions {
-    display: none; 
+    display: none;
   }
 
   .spot-link,

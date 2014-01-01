@@ -10,7 +10,7 @@ feature 'Viewing Spots' do
     spot = create :spot
 
     visit spot_path(spot)
-    
+
     expect(directions_to(spot)[:href]).to match /daddr=#{spot.lat},#{spot.lng}/i
   end
 
@@ -83,7 +83,7 @@ feature 'Creating Spots' do
     expect(spot.lng).to be_within(1.0e-12).of(photo.lng)
 
     expect(page).to have_content spot.titleize
-    expect_photo spot.photo(:large), spot.name
+    expect(page).to have_picture_for spot
   end
 end
 

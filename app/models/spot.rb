@@ -27,9 +27,8 @@ class Spot < ActiveRecord::Base
 
   friendly_id :slug_candidates, use: :slugged
 
-  has_attached_file :photo, styles: { large: '600x600#' },
+  has_attached_file :photo, styles: { small: '400x400#', large: '800x800#' },
                     processors: [:thumbnail, :location]
-
 
   process_in_background :photo
 
@@ -44,8 +43,8 @@ class Spot < ActiveRecord::Base
   validates_presence_of :name, :slug
   validates_uniqueness_of :name, :slug
 
-  validates_attachment_presence :photo, presence: true
-  
+  validates_attachment_presence :photo
+
   # validates_attachment_size :photo, in: 0..2.megabytes
   validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
