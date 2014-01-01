@@ -6,3 +6,7 @@
 @import "lists";
 @import "flashes";
 @import "images";
+
+html {
+  overflow-y: scroll;
+}
