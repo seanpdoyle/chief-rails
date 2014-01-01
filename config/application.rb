@@ -17,7 +17,7 @@ module Chief
     config.x.bullet.enabled = false
     config.x.paperclip.s3 = true
     config.x.workless.scaler = :local
-    
+
     config.cache_store = :dalli_store
 
     config.generators do |generate|
@@ -45,5 +45,6 @@ module Chief
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.enforce_available_locales = true
   end
 end
