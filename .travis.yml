@@ -18,7 +18,7 @@ before_install:
 - gem install bundler fog
 - ./bin/travis/bundle_install.sh
 script:
-- RAILS_ENV=test bundle exec rake --trace db:create db:migrate spec
+- RAILS_ENV=test bin/rake --trace db:create db:migrate spec
 after_script:
 - ruby bin/travis/bundle_cache.rb
 deploy:

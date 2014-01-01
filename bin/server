@@ -10,4 +10,4 @@ bin/setup
 
 export PORT=3000
 
-exec bin/stubs/foreman start
+exec foreman start
