@@ -7,6 +7,12 @@
   }
 }
 
+.spots {
+  .img-preview {
+    @include size(auto 400);
+  }
+}
+
 .spot-row {
   @extend .clearfix;
 
