@@ -34,7 +34,7 @@ gem 'slim-rails'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'unicorn'
-gem 'workless', '~> 1.1.3'
+gem 'workless', '~> 1.2.2'
 
 group :development do
   gem 'annotate'
