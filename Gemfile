@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'actionpack-page_caching'
-gem 'airbrake'
 gem 'aws-sdk'
 gem 'bourbon'
 gem 'clearance'
@@ -38,14 +37,15 @@ gem 'workless', '~> 1.2.2'
 
 group :development do
   gem 'annotate'
+  gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'foreman'
   gem 'meta_request'
   gem 'rails-footnotes', '>= 3.7.9'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
-  gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
   gem 'reek'
@@ -58,7 +58,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'
-  gem 'webmock'
+  gem 'webmock', '1.15.0'
 end
 
 group :development, :staging do
