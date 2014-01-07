@@ -39,6 +39,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
   gem 'meta_request'
   gem 'rails-footnotes', '>= 3.7.9'
   gem 'spring'

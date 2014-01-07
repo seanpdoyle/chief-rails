@@ -33,6 +33,11 @@ class Spot < ActiveRecord::Base
 
   process_in_background :photo
 
+  validates_attachment_presence :photo
+
+  # validates_attachment_size :photo, in: 0..2.megabytes
+  validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
+
   validates_numericality_of :lat, less_than_or_equal_to: 90.0,
                                   greater_than_or_equal_to: -90.0,
                                   if: :has_location?
@@ -43,11 +48,6 @@ class Spot < ActiveRecord::Base
 
   validates_presence_of :name, :slug
   validates_uniqueness_of :name, :slug
-
-  validates_attachment_presence :photo
-
-  # validates_attachment_size :photo, in: 0..2.megabytes
-  validates_attachment_content_type :photo, content_type: ALLOWED_PHOTOS
 
   delegate :titleize, to: :name, allow_nil: true
 
