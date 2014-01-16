@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'actionpack-page_caching'
+gem 'active_model_serializers'
 gem 'aws-sdk'
 gem 'bourbon'
 gem 'clearance'
