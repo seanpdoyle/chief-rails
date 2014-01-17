@@ -3,7 +3,7 @@ Paperclip.registered_attachments_styles_path = 'config/paperclip_attachments.yml
 if Rails.configuration.x.paperclip.s3
   Paperclip::Attachment.default_options.tap do |options|
     options[:storage] = :s3
-    options[:s3_protocol] = ""
+    options[:s3_protocol] = "https"
     options[:s3_headers] = -> attachment do
       {}.tap do |headers|
         if attachment
