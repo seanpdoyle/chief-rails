@@ -3,7 +3,9 @@ class Image < ActiveRecord::Base
 
   belongs_to :spot
 
-  has_attached_file :file, processors: [:thumbnail, :location]
+  has_attached_file :file, processors: [:thumbnail, :location],
+    styles: { thumbnail: "300x300#", large: "1000x1000>" }
+  process_in_background :file
 
   validates_attachment :file,
     presence: true,

@@ -5,8 +5,8 @@ class CreateImages < ActiveRecord::Migration
 
       t.belongs_to :spot, index: true
 
-      t.decimal :latitude, precision: 15, scale: 2
-      t.decimal :longitude, precision: 15, scale: 2
+      t.decimal :latitude, precision: 15, scale: 10
+      t.decimal :longitude, precision: 15, scale: 10
 
       t.timestamps null: false
     end

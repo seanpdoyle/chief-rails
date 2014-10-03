@@ -38,18 +38,18 @@ ActiveRecord::Schema.define(version: 20141003033938) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "spot_id"
-    t.decimal  "latitude",          precision: 15, scale: 2
-    t.decimal  "longitude",         precision: 15, scale: 2
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.decimal  "latitude",          precision: 15, scale: 10
+    t.decimal  "longitude",         precision: 15, scale: 10
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "images", ["spot_id"], name: "index_images_on_spot_id", using: :btree
 
   create_table "spots", force: true do |t|
-    t.string   "name",                                null: false
-    t.decimal  "latitude",   precision: 15, scale: 2
-    t.decimal  "longitude",  precision: 15, scale: 2
+    t.string   "name",                                 null: false
+    t.decimal  "latitude",   precision: 15, scale: 10
+    t.decimal  "longitude",  precision: 15, scale: 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end

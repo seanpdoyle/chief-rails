@@ -1,9 +1,0 @@
-= link_to 'Back to Spots', spots_path
-
-= render @spot
-
-section.spots-nearby
-  h1 Nearby Spots
-  = render @spot.nearby.limit(5)
-
-= render 'google_maps'

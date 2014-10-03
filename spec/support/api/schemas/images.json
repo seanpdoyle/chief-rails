@@ -9,14 +9,18 @@
           "id",
           "latitude",
           "longitude",
-          "url"
+          "original",
+          "large",
+          "thumbnail"
         ],
         "properties" : {
           "id" : { "type" : "integer" },
           "latitude" : { "type" : ["float", "null"] },
           "longitude" : { "type" : ["float", "null"] },
           "spot_id" : { "type" : ["integer", "null"] },
-          "url" : { "type" : "string" }
+          "original" : { "type" : ["string", "null"] },
+          "large" : { "type" : ["string", "null"] },
+          "thumbnail" : { "type" : ["string", "null"] }
         }
       }
     }

@@ -1,6 +1,0 @@
-= image_tag @spot.photo.url(:large), class: "img-preview"
-
-= simple_form_for @spot do |f|
-  = f.input :name
-  = f.input :photo, input_html: { data: { behavior: "image_preview", preview: ".img-preview" } }
-  = f.submit

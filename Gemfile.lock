@@ -72,6 +72,8 @@ GEM
     delayed_job_active_record (4.0.2)
       activerecord (>= 3.0, < 4.2)
       delayed_job (>= 3.0, < 4.1)
+    delayed_paperclip (2.8.0)
+      paperclip (>= 3.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (0.11.1)
@@ -230,7 +232,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.8.1)
+  active_model_serializers (~> 0.8.2)
   annotate
   aws-sdk
   better_errors
@@ -241,6 +243,7 @@ DEPENDENCIES
   dalli
   database_cleaner
   delayed_job_active_record (>= 4.0.0)
+  delayed_paperclip
   dotenv-rails
   email_validator
   factory_girl_rails
