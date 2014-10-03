@@ -1,5 +1,0 @@
-#!/bin/sh
-#
-# Deploy to staging
-
-bin/deploy-to staging

@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-# seed
-
-set -e
-
-bin/rake db:drop db:create db:migrate

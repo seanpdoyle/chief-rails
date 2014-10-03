@@ -15,8 +15,6 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include ActionView::RecordIdentifier, type: :feature
-  config.include Features, type: :feature
   config.include Photos
 
   config.fail_fast = true
@@ -25,5 +23,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 end
 
-Capybara.javascript_driver = :webkit
+ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(allow_localhost: true)

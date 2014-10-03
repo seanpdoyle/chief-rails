@@ -3,24 +3,37 @@
 # Set up Rails app. Run this script immediately after cloning the codebase.
 # https://github.com/thoughtbot/guides/tree/master/protocol
 
-save_bundle_md () {
-  bundle install
-  echo $MD5 > $GEMFILE_MD5
-  echo "Saving Bundle MD5..."
-}
-
+# Exit if any subcommand fails
 set -e
 
-GEMFILE_MD5=.bundle/GEMFILE_MD5
-
-MD5=$(md5 Gemfile)
-
-if ! [ -f $GEMFILE_MD5 ]; then
-  save_bundle_md
-elif [[ "$(cat $GEMFILE_MD5)" != "$MD5" ]]; then
-  save_bundle_md
+# Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
+if [ ! -d .git/safe ]; then
+  mkdir -p .git/safe
 fi
 
-echo "Running migrations..."
+# Set up Ruby dependencies via Bundler
+if ! command -v bundle > /dev/null; then
+  gem install bundler --no-document
+fi
 
-bin/rake db:create db:migrate db:test:clone
+bundle install
+
+# Set up configurable environment variables
+if [ ! -f .env ]; then
+  cp .sample.env .env
+fi
+
+# Set up database and add any development seed data
+bundle exec rake dev:prime
+
+# Pick a port for Foreman
+if ! grep -qs 'port' .foreman; then
+  printf 'port: 7000 %>\n' >> .foreman
+fi
+
+# Error out if Foreman is not installed
+if ! command -v foreman > /dev/null; then
+  printf 'Foreman is not installed.\n'
+  printf 'See https://github.com/ddollar/foreman for install instructions.\n'
+  exit 1
+fi
