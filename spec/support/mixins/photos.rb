@@ -1,5 +1,5 @@
 module Photos
-  PHOTO_ROOT = File.join Rails.root, 'spec', 'support', 'photos'
+  PHOTO_ROOT = Rails.root.join('spec', 'fixtures')
   WITH_EXIF = OpenStruct.new(
     path: File.join(PHOTO_ROOT, 'with-exif.jpg'),
     lat: 39.99783333333334,

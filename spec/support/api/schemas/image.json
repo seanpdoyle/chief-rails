@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": ["image"],
+  "properties": {
+    "image" : {
+      "type" : "object",
+      "required" : [
+        "id",
+        "latitude",
+        "longitude",
+        "url"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "latitude" : { "type" : ["float", "null"] },
+        "longitude" : { "type" : ["float", "null"] },
+        "spot_id" : { "type" : ["integer", "null"] },
+        "url" : { "type" : "string" }
+      }
+    }
+  }
+}
+

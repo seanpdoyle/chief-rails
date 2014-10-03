@@ -1,4 +1,3 @@
 Chief::Application.routes.draw do
-  root to: 'spots#index'
-  resources :spots
+  resources :images, only: [:create, :index]
 end
