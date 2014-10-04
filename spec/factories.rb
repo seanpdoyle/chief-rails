@@ -10,6 +10,10 @@ FactoryGirl.define do
     file_content_type "image/jpg"
   end
 
+  factory :nearby do
+    located
+  end
+
   factory :spot do
     sequence(:name) { |i| "spot #{i}" }
 

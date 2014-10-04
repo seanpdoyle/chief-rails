@@ -4,39 +4,11 @@ module Locatable
   NEARBY = 5
 
   included do
+    include Geodesic
     acts_as_mappable(
       lat_column_name: :latitude,
       lng_column_name: :longitude,
     )
-
-    alias_attribute :lat, :latitude
-    alias_attribute :lng, :longitude
-
-    validates :latitude,
-      numericality: {
-      less_than_or_equal_to: 90.0,
-      greater_than_or_equal_to: -90.0,
-      allow_nil: true,
-    }
-
-    validates :longitude,
-      numericality: {
-      less_than_or_equal_to: 180.0,
-      greater_than_or_equal_to: -180.0,
-      allow_nil: true,
-    }
-
-    def locatable?
-      latitude.present? && longitude.present?
-    end
-
-    def location=(location)
-      self.latitude, self.longitude, _ = *location
-    end
-
-    def location
-      [ latitude, longitude ]
-    end
   end
 
   module ClassMethods

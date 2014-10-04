@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "required": ["spots", "images", "meta"],
+  "properties": {
+    "spots" : {
+      "type" : "array",
+      "items": {
+        "required" : [
+          "id",
+          "image_ids",
+          "latitude",
+          "longitude",
+          "name"
+        ],
+        "properties" : {
+          "id" : { "type" : "integer" },
+          "latitude" : { "type" : ["float", "null"] },
+          "longitude" : { "type" : ["float", "null"] },
+          "name" : { "type" : ["string"] },
+          "image_ids" : { "type" : ["array"] }
+        }
+      }
+    },
+    "images" : {
+      "type" : "array",
+      "items": {
+        "required" : [
+          "id",
+          "latitude",
+          "longitude",
+          "original",
+          "large",
+          "thumbnail"
+        ],
+        "properties" : {
+          "id" : { "type" : "integer" },
+          "latitude" : { "type" : ["float", "null"] },
+          "longitude" : { "type" : ["float", "null"] },
+          "spot_id" : { "type" : ["integer", "null"] },
+          "original" : { "type" : ["string", "null"] },
+          "large" : { "type" : ["string", "null"] },
+          "thumbnail" : { "type" : ["string", "null"] }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "origin",
+        "radius"
+      ],
+      "properties": {
+        "latitude": { "type": "float" },
+        "longitude": { "type": "float" },
+        "radius": { "type": "float" }
+      }
+    }
+  }
+}
