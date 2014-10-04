@@ -12,15 +12,19 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.create!(spot_params)
+    @spot = Spot.new(spot_params)
 
-    render json: @spot, status: :created
+    if @spot.save
+      render status: 201, json: @spot
+    else
+      render status: 422, json: { errors: @spot.errors }
+    end
   end
 
   private
 
   def spot_params
-    params.require(:spot)
+    params.fetch(:spot, {})
       .permit(:name, :latitude, :longitude, image_ids: [])
   end
 end

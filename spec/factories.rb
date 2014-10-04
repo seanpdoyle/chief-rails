@@ -5,21 +5,7 @@ FactoryGirl.define do
     location [10, 15]
   end
 
-  trait :locatable do
-    ignore do
-      location []
-    end
-
-    after :stub, :build do |locatable, evaluator|
-      location = Array(evaluator.location.presence)
-      locatable.latitude = location.first
-      locatable.longitude = location.last
-    end
-  end
-
   factory :image do
-    locatable
-
     file_file_name "spec/fixtures/with-exif.jpg"
     file_content_type "image/jpg"
   end
@@ -27,6 +13,10 @@ FactoryGirl.define do
   factory :spot do
     sequence(:name) { |i| "spot #{i}" }
 
-    locatable
+    after :build, :stub do |spot, evaluator|
+      if spot.images.blank?
+        spot.images = [ build(:image, :located, spot: spot) ]
+      end
+    end
   end
 end

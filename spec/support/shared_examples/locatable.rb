@@ -12,7 +12,7 @@ shared_examples_for :locatable do
   describe "#location=" do
     context "when nil" do
       it "makes it unlocatable" do
-        locatable = build(described_model, :locatable)
+        locatable = build(described_model, :located)
 
         locatable.location = nil
 

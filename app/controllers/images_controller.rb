@@ -12,15 +12,19 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create!(image_params)
+    @image = Image.new(image_params)
 
-    render json: @image, status: 201
+    if @image.save
+      render status: 201, json: @image
+    else
+      render status: 422, json: { errors: @image.errors }
+    end
   end
 
   private
 
   def image_params
-    params.require(:image)
+    params.fetch(:image, {})
       .permit(:file, :latitude, :longitude)
   end
 end

@@ -34,5 +34,6 @@ describe "POST /spots", type: :request do
     post "/spots", format: :json, spot: {}
 
     expect(response.status).to eq 422
+    expect(response).to match_response_schema("spot.invalid")
   end
 end

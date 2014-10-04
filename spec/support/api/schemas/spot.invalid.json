@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": ["errors"],
+  "properties": {
+    "errors" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "name" : { "type" : "array" },
+        "latitude" : { "type" : "array" },
+        "longitude" : { "type" : "array" },
+        "image_ids" : { "type" : "array" }
+      }
+    }
+  }
+}
+

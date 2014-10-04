@@ -6,6 +6,7 @@ class Spot < ActiveRecord::Base
   has_many :images, dependent: :destroy
 
   validates :name, presence: true
+  validates :images, presence: true
 
   def locatable_images
     images.locatable

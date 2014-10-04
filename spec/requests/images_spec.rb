@@ -31,9 +31,10 @@ describe "POST /images", type: :request do
   end
 
   it "rejects an invalid image" do
-    post "/images", format: :json
+    post "/images", format: :json, image: {}
 
     expect(response.status).to eq 422
+    expect(response).to match_response_schema("image.invalid")
   end
 
   def with_exif

@@ -1,6 +1,8 @@
 describe Spot do
   it_behaves_like :locatable
 
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:images) }
   it { should have_many(:images).dependent(:destroy) }
 
   describe "#locatable_images" do

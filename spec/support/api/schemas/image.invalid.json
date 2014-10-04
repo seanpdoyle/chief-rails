@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": ["errors"],
+  "properties": {
+    "errors" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "file" : { "type" : ["array"] },
+        "latitude" : { "type" : ["array"] },
+        "longitude" : { "type" : ["array"] }
+      }
+    }
+  }
+}
+
