@@ -11,7 +11,7 @@ FactoryGirl.define do
     end
 
     after :stub, :build do |locatable, evaluator|
-      location = Array(evaluator.location)
+      location = Array(evaluator.location.presence)
       locatable.latitude = location.first
       locatable.longitude = location.last
     end

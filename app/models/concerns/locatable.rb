@@ -26,6 +26,14 @@ module Locatable
       allow_nil: true,
     }
 
+    def locatable?
+      latitude.present? && longitude.present?
+    end
+
+    def location=(location)
+      self.latitude, self.longitude, _ = *location
+    end
+
     def location
       [ latitude, longitude ]
     end
