@@ -1,13 +1,7 @@
 class SpotSerializer < ActiveModel::Serializer
-  cached
+  attributes :id, :name, :latitude, :longitude
 
-  delegate :cache_key, to: :object
+  has_many :images
 
-  attributes :id, :name, :lat, :lng, :photos
-
-  def photos
-    %w[small medium large].each_with_object({}) do |key, hash|
-      hash[key] = object.photo.url(key)
-    end
-  end
+  embed :ids, include: true
 end

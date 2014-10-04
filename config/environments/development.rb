@@ -36,7 +36,5 @@ Chief::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_controller.action_on_unpermitted_parameters = :raise
-
   config.action_mailer.default_url_options = { host: 'app.local' }
 end

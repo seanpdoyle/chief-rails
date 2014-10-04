@@ -1,7 +1,24 @@
 {
   "type": "object",
-  "required": ["images"],
+  "required": ["spot", "images"],
   "properties": {
+    "spot" : {
+      "type" : "object",
+      "required" : [
+        "id",
+        "image_ids",
+        "latitude",
+        "longitude",
+        "name"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "latitude" : { "type" : ["float", "null"] },
+        "longitude" : { "type" : ["float", "null"] },
+        "name" : { "type" : ["string"] },
+        "image_ids" : { "type" : ["array"] }
+      }
+    },
     "images" : {
       "type" : "array",
       "items": {
