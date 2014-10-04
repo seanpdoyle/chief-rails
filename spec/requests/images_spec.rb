@@ -1,3 +1,14 @@
+describe "GET /images/:id", type: :request do
+  it "returns the image" do
+    image = create(:image, :located)
+
+    get "/images/#{image.id}", format: :json
+
+    expect(response.status).to eq 200
+    expect(response).to match_response_schema("image")
+  end
+end
+
 describe "GET /images", type: :request do
   it "includes all images" do
     create(:image, :located)

@@ -1,3 +1,3 @@
 Chief::Application.routes.draw do
-  resources :images, only: [:create, :index]
+  resources :images, only: [:create, :index, :show]
 end
