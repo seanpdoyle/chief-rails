@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all
+    @images = Image.orphan
 
     render json: @images
   end

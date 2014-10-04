@@ -11,6 +11,10 @@ class Image < ActiveRecord::Base
     presence: true,
     content_type: { content_type: %r{\Aimage/.*\Z} }
 
+  def self.orphan
+    where(spot_id: nil)
+  end
+
   def url
     file.url
   end
