@@ -25,6 +25,6 @@ class SpotsController < ApplicationController
 
   def spot_params
     params.fetch(:spot, {})
-      .permit(:name, :latitude, :longitude, image_ids: [])
+      .permit(:name, :latitude, :longitude, :image_ids, image_ids: [])
   end
 end
