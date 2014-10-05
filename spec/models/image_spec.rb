@@ -2,7 +2,7 @@ describe Image do
   it_behaves_like :locatable
 
   describe "associations" do
-    it { should belong_to(:spot) }
+    it { should belong_to(:spot).touch }
     it { should have_attached_file(:file) }
   end
 

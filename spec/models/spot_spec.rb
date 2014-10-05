@@ -9,6 +9,20 @@ describe Spot do
     it { should delegate_method(:locatable_images).to(:images).as(:locatable) }
   end
 
+  describe "callbacks" do
+    describe "#before_save" do
+      it "calls locate" do
+        image = create(:image, location: nil)
+        spot = create(:spot, images: [image])
+
+        image.update(location: [1, 1])
+        spot.reload
+
+        expect(spot.location).to eq image.location
+      end
+    end
+  end
+
   describe "#locate" do
     context "with a location" do
       it "does nothing" do

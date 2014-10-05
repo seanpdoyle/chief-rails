@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
   include Locatable
 
-  belongs_to :spot
+  belongs_to :spot, touch: true
 
   has_attached_file :file, processors: [:thumbnail, :location],
     styles: { thumbnail: "300x300#", large: "1000x1000>" }

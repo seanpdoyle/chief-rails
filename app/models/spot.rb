@@ -1,7 +1,8 @@
 class Spot < ActiveRecord::Base
   include Locatable
 
-  before_create :locate
+  before_save :locate
+  after_touch :locate!
 
   has_many :images, dependent: :destroy
 
@@ -12,6 +13,12 @@ class Spot < ActiveRecord::Base
     images.locatable
   end
 
+  def locate!
+    if locate
+      save!
+    end
+  end
+
   def locate
     if !locatable? && locatable_images.any?
       total = locatable_images.count.to_f
@@ -19,6 +26,7 @@ class Spot < ActiveRecord::Base
         locatable_images.map(&:latitude).sum / total,
         locatable_images.map(&:longitude).sum / total,
       ]
+      true
     end
   end
 end
