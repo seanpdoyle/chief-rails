@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/seanpdoyle/chief.png)](https://travis-ci.org/seanpdoyle/chief)
+[![Build Status](https://travis-ci.org/seanpdoyle/chief-rails.png)](https://travis-ci.org/seanpdoyle/chief-rails)
 
 You look great in Suspenders
 ============================
