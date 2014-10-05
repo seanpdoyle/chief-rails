@@ -43,6 +43,6 @@ class Nearby
   end
 
   def spots
-    Spot.near([latitude, longitude])
+    Spot.near([latitude, longitude], radius)
   end
 end

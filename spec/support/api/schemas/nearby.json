@@ -6,6 +6,7 @@
       "type" : "array",
       "items": {
         "required" : [
+          "distance",
           "id",
           "image_ids",
           "latitude",
@@ -13,11 +14,12 @@
           "name"
         ],
         "properties" : {
+          "distance": { "type": "number" },
           "id" : { "type" : "integer" },
+          "image_ids" : { "type" : ["array"] },
           "latitude" : { "type" : ["number", "null"] },
           "longitude" : { "type" : ["number", "null"] },
-          "name" : { "type" : ["string"] },
-          "image_ids" : { "type" : ["array"] }
+          "name" : { "type" : ["string"] }
         }
       }
     },
@@ -26,19 +28,19 @@
       "items": {
         "required" : [
           "id",
+          "large",
           "latitude",
           "longitude",
           "original",
-          "large",
           "thumbnail"
         ],
         "properties" : {
           "id" : { "type" : "integer" },
+          "large" : { "type" : ["string", "null"] },
           "latitude" : { "type" : ["number", "null"] },
           "longitude" : { "type" : ["number", "null"] },
-          "spot_id" : { "type" : ["integer", "null"] },
           "original" : { "type" : ["string", "null"] },
-          "large" : { "type" : ["string", "null"] },
+          "spot_id" : { "type" : ["integer", "null"] },
           "thumbnail" : { "type" : ["string", "null"] }
         }
       }
@@ -46,7 +48,8 @@
     "meta": {
       "type": "object",
       "required": [
-        "origin",
+        "latitude",
+        "longitude",
         "radius"
       ],
       "properties": {

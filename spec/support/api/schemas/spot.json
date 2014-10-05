@@ -17,6 +17,9 @@
         "longitude" : { "type" : ["number", "null"] },
         "name" : { "type" : ["string"] },
         "image_ids" : { "type" : ["array"] }
+      },
+      "additionalProperties": {
+        "distance": { "type": "number" }
       }
     },
     "images" : {
@@ -39,6 +42,19 @@
           "large" : { "type" : ["string", "null"] },
           "thumbnail" : { "type" : ["string", "null"] }
         }
+      }
+    }
+  },
+  "additionalProperties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" }
       }
     }
   }
