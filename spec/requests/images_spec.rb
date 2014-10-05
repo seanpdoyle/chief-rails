@@ -9,6 +9,16 @@ describe "GET /images/:id", type: :request do
   end
 end
 
+describe "DELETE /images/:id", type: :request do
+  it "deletes the image" do
+    image = create(:image)
+
+    delete "/images/#{image.to_param}", format: :json
+
+    expect(response.status).to eq 200
+  end
+end
+
 describe "GET /images", type: :request do
   it "includes all images" do
     create(:image, :located)

@@ -21,6 +21,14 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @image = Image.find(params[:id])
+
+    @image.destroy!
+
+    head 200
+  end
+
   private
 
   def image_params
