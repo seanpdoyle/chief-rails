@@ -1,12 +1,6 @@
-require 'dotenv'
-Dotenv.load
-
 Chief::Application.configure do
   config.x.paperclip.s3 = false
   # Settings specified here will take precedence over those in config/application.rb.
-  config.x.bullet.enabled = true
-
-  config.asset_host = "http://localhost:5000"
 
   config.cache_store = :dalli_store, "127.0.0.1:#{ENV['BOXEN_MEMCACHED_PORT'] || 11211}"
 

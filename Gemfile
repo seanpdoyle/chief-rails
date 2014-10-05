@@ -26,13 +26,13 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'dotenv-rails'
   gem 'meta_request'
   gem 'spring'
   gem 'spring-commands-rspec'
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'rspec-rails', '>= 2.14'
@@ -46,10 +46,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock', '1.15.0'
-end
-
-group :development, :staging do
-  gem 'bullet'
 end
 
 group :staging, :production do
