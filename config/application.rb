@@ -4,7 +4,6 @@ require File.expand_path('../boot', __FILE__)
 require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +15,7 @@ module Chief
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
       allow do
         origins ENV.fetch("ALLOW_ORIGIN")
-        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+        resource "*", headers: [:get, :post, :delete, :put, :options, :head]
       end
     end
 
