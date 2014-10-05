@@ -1,8 +1,14 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
+    if nearby.valid?
+      @spots = nearby.spots
 
-    render json: @spots
+      render json: @spots, meta: nearby
+    else
+      @spots = Spot.all
+
+      render json: @spots
+    end
   end
 
   def show
@@ -22,6 +28,14 @@ class SpotsController < ApplicationController
   end
 
   private
+
+  def nearby
+    Nearby.new(nearby_params)
+  end
+
+  def nearby_params
+    params.slice(:latitude, :longitude, :radius)
+  end
 
   def spot_params
     params.fetch(:spot, {})

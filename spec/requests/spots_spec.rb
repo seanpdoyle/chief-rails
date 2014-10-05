@@ -1,4 +1,20 @@
 describe "GET /spots", type: :request do
+  context "with location parameters" do
+    it "returns Spots near the location" do
+      spot = create(:spot, :located)
+      params = {
+        radius: 5,
+        latitude: spot.latitude,
+        longitude: spot.longitude,
+      }
+
+      get "/spots", { format: :json }.merge(params)
+
+      expect(response.status).to eq 200
+      expect(response).to match_response_schema("nearby")
+    end
+  end
+
   it "returns spots" do
     create(:spot, :located, images: [ create(:image) ])
 
