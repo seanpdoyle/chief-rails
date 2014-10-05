@@ -12,6 +12,13 @@ Bundler.require(:default, Rails.env)
 
 module Chief
   class Application < Rails::Application
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
+      allow do
+        origins ENV.fetch("ALLOW_ORIGIN")
+        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
+
     config.active_record.default_timezone = :utc
 
     config.x.bullet.enabled = false
