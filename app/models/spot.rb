@@ -1,7 +1,7 @@
 class Spot < ActiveRecord::Base
   include Locatable
 
-  after_create :locate
+  before_create :locate
 
   has_many :images, dependent: :destroy
 

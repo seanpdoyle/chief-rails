@@ -13,8 +13,8 @@
       ],
       "properties" : {
         "id" : { "type" : "integer" },
-        "latitude" : { "type" : ["float", "null"] },
-        "longitude" : { "type" : ["float", "null"] },
+        "latitude" : { "type" : ["number", "null"] },
+        "longitude" : { "type" : ["number", "null"] },
         "name" : { "type" : ["string"] },
         "image_ids" : { "type" : ["array"] }
       }
@@ -32,8 +32,8 @@
         ],
         "properties" : {
           "id" : { "type" : "integer" },
-          "latitude" : { "type" : ["float", "null"] },
-          "longitude" : { "type" : ["float", "null"] },
+          "latitude" : { "type" : ["number", "null"] },
+          "longitude" : { "type" : ["number", "null"] },
           "spot_id" : { "type" : ["integer", "null"] },
           "original" : { "type" : ["string", "null"] },
           "large" : { "type" : ["string", "null"] },

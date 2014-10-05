@@ -1,6 +1,6 @@
 describe "GET /spots", type: :request do
   it "returns spots" do
-    create(:spot, images: [ create(:image) ])
+    create(:spot, :located, images: [ create(:image) ])
 
     get "/spots", format: :json
 
@@ -11,7 +11,7 @@ end
 
 describe "GET /spots/:id", type: :request do
   it "returns spots" do
-    spot = create(:spot, images: [ create(:image) ])
+    spot = create(:spot, :located, images: [ create(:image) ])
 
     get "/spots/#{spot.to_param}", format: :json
 
@@ -22,7 +22,7 @@ end
 
 describe "POST /spots", type: :request do
   it "creates a spot" do
-    image = create(:image)
+    image = create(:image, :located)
     spot_params = attributes_for(:spot, image_ids: [image.id])
     post "/spots", format: :json, spot: spot_params
 

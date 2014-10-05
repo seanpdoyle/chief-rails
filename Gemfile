@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'active_model_serializers', '~> 0.8.2'
+gem 'activesupport-json_encoder'
 gem 'aws-sdk'
 gem 'clearance'
 gem 'custom_configuration'
