@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
+    @image = find_image
 
     render json: @image
   end
@@ -22,7 +22,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
+    @image = find_image
 
     @image.destroy!
 
@@ -30,6 +30,10 @@ class ImagesController < ApplicationController
   end
 
   private
+
+  def find_image
+    Image.find(params[:id])
+  end
 
   def image_params
     params.fetch(:image, {})

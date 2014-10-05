@@ -12,13 +12,13 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = find_spot
 
     render json: @spot
   end
 
   def update
-    @spot = Spot.find(params[:id])
+    @spot = find_spot
 
     if @spot.update(spot_params)
       render status: 200, json: @spot
@@ -38,6 +38,10 @@ class SpotsController < ApplicationController
   end
 
   private
+
+  def find_spot
+    Spot.find(params[:id])
+  end
 
   def nearby
     Nearby.new(nearby_params)
