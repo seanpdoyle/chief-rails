@@ -37,6 +37,6 @@ class ImagesController < ApplicationController
 
   def image_params
     params.fetch(:image, {})
-      .permit(:file, :latitude, :longitude)
+      .permit(:file, :latitude, :longitude, :spot_id)
   end
 end

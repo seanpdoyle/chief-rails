@@ -1,7 +1,4 @@
 Chief::Application.configure do
-  config.x.paperclip.s3 = false
-  # Settings specified here will take precedence over those in config/application.rb.
-
   config.cache_store = :dalli_store, "127.0.0.1:#{ENV['BOXEN_MEMCACHED_PORT'] || 11211}"
 
   # In the development environment your application's code is reloaded on

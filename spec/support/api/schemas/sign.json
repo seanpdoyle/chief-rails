@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required" : [
+    "Cache-Control",
+    "Content-Type",
+    "acl",
+    "awsaccesskeyid",
+    "bucket",
+    "expires",
+    "key",
+    "policy",
+    "signature",
+    "success_action_status"
+  ],
+  "properties": {
+    "Cache-Control": { "type": "string" },
+    "Content-Type": { "type": "string" },
+    "acl": { "type": "string" },
+    "awsaccesskeyid": { "type": "string" },
+    "bucket": { "type": "string" },
+    "expires": { "type": "string" },
+    "key": { "type": "string" },
+    "policy": { "type": "string" },
+    "signature": { "type": "string" },
+    "success_action_status": { "type": "string" }
+  }
+}

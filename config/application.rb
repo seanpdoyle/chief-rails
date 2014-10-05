@@ -11,17 +11,16 @@ Bundler.require(:default, Rails.env)
 
 module Chief
   class Application < Rails::Application
-    config.asset_host = ENV.fetch("ASSET_HOST")
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
       allow do
         origins ENV.fetch("ALLOW_ORIGIN")
-        resource "*", headers: [:get, :post, :delete, :put, :options, :head]
+        resource "*", headers: :any, methods: [:get, :post, :delete, :put, :options, :head]
       end
     end
 
     config.active_record.default_timezone = :utc
 
-    config.x.paperclip.s3 = false
+    config.x.paperclip.s3 = true
     config.x.workless.scaler = :local
 
     config.cache_store = :dalli_store
