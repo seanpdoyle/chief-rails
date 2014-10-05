@@ -36,6 +36,25 @@ describe "GET /spots/:id", type: :request do
   end
 end
 
+describe "PUT /spots/:id", type: :request do
+  it "returns malformed request when invalid" do
+    spot = create(:spot)
+
+    put "/spots/#{spot.to_param}", format: :json, spot: { name: nil }
+
+    expect(response.status).to eq 422
+    expect(response).to match_response_schema("spot.invalid")
+  end
+
+  it "updates the spot" do
+    spot = create(:spot)
+
+    put "/spots/#{spot.to_param}", format: :json, name: "updated"
+
+    expect(response.status).to eq 200
+  end
+end
+
 describe "POST /spots", type: :request do
   it "creates a spot" do
     image = create(:image, :located)

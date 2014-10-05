@@ -17,6 +17,16 @@ class SpotsController < ApplicationController
     render json: @spot
   end
 
+  def update
+    @spot = Spot.find(params[:id])
+
+    if @spot.update(spot_params)
+      render status: 200, json: @spot
+    else
+      render status: 422, json: { errors: @spot.errors }
+    end
+  end
+
   def create
     @spot = Spot.new(spot_params)
 
