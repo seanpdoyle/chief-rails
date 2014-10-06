@@ -17,6 +17,7 @@ class Spot < ActiveRecord::Base
     if locate
       save!
     end
+    self
   end
 
   def locate
@@ -26,7 +27,7 @@ class Spot < ActiveRecord::Base
         locatable_images.map(&:latitude).sum / total,
         locatable_images.map(&:longitude).sum / total,
       ]
-      true
     end
+    self
   end
 end
