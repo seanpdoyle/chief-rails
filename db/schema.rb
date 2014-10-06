@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20141003033938) do
 
   create_table "spots", force: true do |t|
     t.string   "name",                                 null: false
-    t.decimal  "latitude",   precision: 15, scale: 10
-    t.decimal  "longitude",  precision: 15, scale: 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.decimal  "latitude",   precision: 15, scale: 10, null: false
+    t.decimal  "longitude",  precision: 15, scale: 10, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
 end

@@ -57,8 +57,6 @@ end
 
 describe "POST /spots", type: :request do
   it "creates a spot" do
-    image = create(:image, :located)
-    spot_params = attributes_for(:spot, image_ids: [image.id])
     post "/spots", format: :json, spot: spot_params
 
     expect(response.status).to eq 201
@@ -71,4 +69,9 @@ describe "POST /spots", type: :request do
     expect(response.status).to eq 422
     expect(response).to match_response_schema("spot.invalid")
   end
+end
+
+def spot_params
+  image = create(:image, :located)
+  attributes_for(:spot, image_ids: [image.id]).except(:location)
 end

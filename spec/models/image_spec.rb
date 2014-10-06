@@ -13,6 +13,15 @@ describe Image do
          rejecting("text/plain", "not_image/xml") }
   end
 
+  describe ".locatable" do
+    it "includes locatables with a location" do
+      create(:image, location: nil)
+      locatable = create(:image, location: [1, 1])
+
+      expect(Image.locatable).to eq [locatable]
+    end
+  end
+
   describe ".orphan" do
     it "includes Images without a Spot" do
       image = create(:image, spot_id: nil)

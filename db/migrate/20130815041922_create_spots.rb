@@ -3,10 +3,10 @@ class CreateSpots < ActiveRecord::Migration
     create_table :spots do |t|
       t.string :name, null: false
 
-      t.decimal :latitude, precision: 15, scale: 10
-      t.decimal :longitude, precision: 15, scale: 10
+      t.decimal :latitude, precision: 15, scale: 10, null: false
+      t.decimal :longitude, precision: 15, scale: 10, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

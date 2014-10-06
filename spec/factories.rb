@@ -5,6 +5,11 @@ FactoryGirl.define do
     location [10, 15]
   end
 
+  trait :not_located do
+    latitude nil
+    longitude nil
+  end
+
   factory :image do
     file_file_name "spec/fixtures/with-exif.jpg"
     file_content_type "image/jpg"
@@ -16,6 +21,7 @@ FactoryGirl.define do
 
   factory :spot do
     sequence(:name) { |i| "spot #{i}" }
+    located
 
     after :build, :stub do |spot, evaluator|
       if spot.images.blank?

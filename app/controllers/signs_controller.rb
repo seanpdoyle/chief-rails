@@ -35,7 +35,7 @@ class SignsController < ApplicationController
   def signature
     Base64.encode64(
       OpenSSL::HMAC.digest(
-        OpenSSL::Digest::Digest.new("sha1"),
+        OpenSSL::Digest.new("sha1"),
         aws_secret_access_key,
         policy(secret_access_key: aws_secret_access_key)
       )

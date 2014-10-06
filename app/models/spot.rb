@@ -1,24 +1,14 @@
 class Spot < ActiveRecord::Base
   include Locatable
 
-  before_save :locate
-  after_touch :locate!
+  before_validation :locate
 
   has_many :images, dependent: :destroy
 
-  validates :name, presence: true
   validates :images, presence: true
-
-  def locatable_images
-    images.locatable
-  end
-
-  def locate!
-    if locate
-      save!
-    end
-    self
-  end
+  validates :name, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 
   def locate
     if !locatable? && locatable_images.any?
@@ -29,5 +19,15 @@ class Spot < ActiveRecord::Base
       ]
     end
     self
+  end
+
+  private
+
+  def locatable_images
+    if persisted?
+      images.locatable
+    else
+      images.select(&:locatable?)
+    end
   end
 end
