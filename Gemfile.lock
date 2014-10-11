@@ -185,6 +185,9 @@ GEM
     session (3.2.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    shoulda-matchers-json (0.0.1)
+      activesupport (>= 3.0.0)
+      json-schema (>= 1.2.1)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -257,6 +260,7 @@ DEPENDENCIES
   recipient_interceptor
   rspec-rails (>= 2.14)
   shoulda-matchers
+  shoulda-matchers-json
   simplecov
   spring
   spring-commands-rspec

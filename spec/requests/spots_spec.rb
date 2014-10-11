@@ -8,7 +8,7 @@ describe "GET /spots", type: :request do
         longitude: spot.longitude,
       }
 
-      get "/spots", { format: :json }.merge(params)
+      get spots_path, { format: :json }.merge(params)
 
       expect(response.status).to eq 200
       expect(response).to match_response_schema("nearby")
@@ -18,7 +18,7 @@ describe "GET /spots", type: :request do
   it "returns spots" do
     create(:spot, :located, images: [ create(:image) ])
 
-    get "/spots", format: :json
+    get spots_path, format: :json
 
     expect(response.status).to eq 200
     expect(response).to match_response_schema("spots")
@@ -32,7 +32,7 @@ describe "GET /spots/:id", type: :request do
     get "/spots/#{spot.to_param}", format: :json
 
     expect(response.status).to eq 200
-    expect(response).to match_response_schema("spot")
+    expect(response).to match_response_schema("spot.single")
   end
 end
 
@@ -57,14 +57,14 @@ end
 
 describe "POST /spots", type: :request do
   it "creates a spot" do
-    post "/spots", format: :json, spot: spot_params
+    post spots_path, format: :json, spot: spot_params
 
     expect(response.status).to eq 201
-    expect(response).to match_response_schema("spot")
+    expect(response).to match_response_schema("spot.single")
   end
 
   it "returns malformed request when invalid" do
-    post "/spots", format: :json, spot: {}
+    post spots_path, format: :json, spot: {}
 
     expect(response.status).to eq 422
     expect(response).to match_response_schema("spot.invalid")

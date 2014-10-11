@@ -1,26 +1,23 @@
 {
   "type": "object",
-  "required": ["spots", "images", "meta"],
+  "required": ["spot", "images"],
   "properties": {
-    "spots" : {
-      "type" : "array",
-      "items": <%= schema_for("spot") %>
-    },
+    "spot" : <%= schema_for("spot") %>,
     "images" : {
       "type" : "array",
       "items": <%= schema_for("image") %>
-    },
+    }
+  },
+  "additionalProperties": {
     "meta": {
       "type": "object",
       "required": [
         "latitude",
-        "longitude",
-        "radius"
+        "longitude"
       ],
       "properties": {
         "latitude": { "type": "number" },
-        "longitude": { "type": "number" },
-        "radius": { "type": "number" }
+        "longitude": { "type": "number" }
       }
     }
   }

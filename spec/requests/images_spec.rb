@@ -5,7 +5,7 @@ describe "GET /images/:id", type: :request do
     get "/images/#{image.to_param}", format: :json
 
     expect(response.status).to eq 200
-    expect(response).to match_response_schema("image")
+    expect(response).to match_response_schema("image.single")
   end
 end
 
@@ -37,7 +37,7 @@ describe "POST /images", type: :request do
     }
 
     expect(response.status).to eq 201
-    expect(response).to match_response_schema("image")
+    expect(response).to match_response_schema("image.single")
   end
 
   it "rejects an invalid image" do

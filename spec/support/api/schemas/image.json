@@ -1,26 +1,20 @@
 {
-  "type": "object",
-  "required": ["image"],
-  "properties": {
-    "image" : {
-      "type" : "object",
-      "required" : [
-        "id",
-        "latitude",
-        "longitude",
-        "original",
-        "large",
-        "thumbnail"
-      ],
-      "properties" : {
-        "id" : { "type" : "integer" },
-        "latitude" : { "type" : ["number", "null"] },
-        "longitude" : { "type" : ["number", "null"] },
-        "spot_id" : { "type" : ["integer", "null"] },
-        "original" : { "type" : ["string", "null"] },
-        "large" : { "type" : ["string", "null"] },
-        "thumbnail" : { "type" : ["string", "null"] }
-      }
-    }
+  "type" : "object",
+  "required" : [
+    "id",
+    "latitude",
+    "longitude",
+    "original",
+    "large",
+    "thumbnail"
+  ],
+  "properties" : {
+    "id" : { "type" : "integer" },
+    "latitude" : { "type" : ["number", "null"] },
+    "longitude" : { "type" : ["number", "null"] },
+    "spot_id" : { "type" : ["integer", "null"] },
+    "original" : { "type" : ["string", "null"] },
+    "large" : { "type" : ["string", "null"] },
+    "thumbnail" : { "type" : ["string", "null"] }
   }
 }

@@ -43,6 +43,7 @@ group :test do
   gem 'json-schema'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers-json', require: false
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock', '1.15.0'

@@ -1,61 +1,20 @@
 {
-  "type": "object",
-  "required": ["spot", "images"],
-  "properties": {
-    "spot" : {
-      "type" : "object",
-      "required" : [
-        "id",
-        "image_ids",
-        "latitude",
-        "longitude",
-        "name"
-      ],
-      "properties" : {
-        "id" : { "type" : "integer" },
-        "latitude" : { "type" : ["number", "null"] },
-        "longitude" : { "type" : ["number", "null"] },
-        "name" : { "type" : ["string"] },
-        "image_ids" : { "type" : ["array"] }
-      },
-      "additionalProperties": {
-        "distance": { "type": "number" }
-      }
-    },
-    "images" : {
-      "type" : "array",
-      "items": {
-        "required" : [
-          "id",
-          "latitude",
-          "longitude",
-          "original",
-          "large",
-          "thumbnail"
-        ],
-        "properties" : {
-          "id" : { "type" : "integer" },
-          "latitude" : { "type" : ["number", "null"] },
-          "longitude" : { "type" : ["number", "null"] },
-          "spot_id" : { "type" : ["integer", "null"] },
-          "original" : { "type" : ["string", "null"] },
-          "large" : { "type" : ["string", "null"] },
-          "thumbnail" : { "type" : ["string", "null"] }
-        }
-      }
-    }
+  "type" : "object",
+  "required" : [
+    "id",
+    "image_ids",
+    "latitude",
+    "longitude",
+    "name"
+    ],
+  "properties" : {
+    "id" : { "type" : "integer" },
+    "latitude" : { "type" : ["number", "null"] },
+    "longitude" : { "type" : ["number", "null"] },
+    "name" : { "type" : ["string"] },
+    "image_ids" : { "type" : ["array"] }
   },
   "additionalProperties": {
-    "meta": {
-      "type": "object",
-      "required": [
-        "latitude",
-        "longitude"
-      ],
-      "properties": {
-        "latitude": { "type": "number" },
-        "longitude": { "type": "number" }
-      }
-    }
+    "distance": { "type": "number" }
   }
 }
