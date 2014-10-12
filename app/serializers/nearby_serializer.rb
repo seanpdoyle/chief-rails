@@ -13,12 +13,16 @@ class NearbySerializer < ActiveModel::Serializer
   end
 
   def distance
-    @distance ||= object.distance_to(origin.location)
+    object.distance_to(origin.location)
+  end
+
+  def bearing
+    bearing = object.bearing_to(origin.location)
+
+    Geocoder::Calculations.compass_point(bearing * -1)
   end
 
   def distance_hash
-    {
-      distance: distance
-    }
+    { distance: distance, bearing: bearing }
   end
 end

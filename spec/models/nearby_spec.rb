@@ -10,7 +10,7 @@ describe Nearby do
       create(:spot, name: "ignore", location: [90, 180])
 
       nearby = Nearby.new(latitude: 1, longitude: 1)
-      nearby_spot_names = nearby.spots.pluck(:name)
+      nearby_spot_names = nearby.spots.map(&:name)
 
       expect(nearby_spot_names).to eq ["nearby"]
     end
@@ -19,7 +19,7 @@ describe Nearby do
       create(:spot, name: "nearby", location: [1, 1])
 
       nearby = Nearby.new(latitude: 1, longitude: 1, radius: 1)
-      nearby_spot_names = nearby.spots.pluck(:name)
+      nearby_spot_names = nearby.spots.map(&:name)
 
       expect(nearby_spot_names).to eq ["nearby"]
     end
