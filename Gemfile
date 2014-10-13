@@ -40,6 +40,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', require: false
   gem 'database_cleaner'
   gem 'json-schema'
   gem 'launchy'
