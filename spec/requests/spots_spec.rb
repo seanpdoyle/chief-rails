@@ -29,7 +29,7 @@ describe "GET /spots/:id", type: :request do
   it "returns spots" do
     spot = create(:spot, :located, images: [ create(:image) ])
 
-    get "/spots/#{spot.to_param}", format: :json
+    get spot_path(spot), format: :json
 
     expect(response.status).to eq 200
     expect(response).to match_response_schema("spot.single")
@@ -40,7 +40,7 @@ describe "PUT /spots/:id", type: :request do
   it "returns malformed request when invalid" do
     spot = create(:spot)
 
-    put "/spots/#{spot.to_param}", format: :json, spot: { name: nil }
+    put spot_path(spot), format: :json, spot: { name: nil }
 
     expect(response.status).to eq 422
     expect(response).to match_response_schema("spot.invalid")
@@ -49,7 +49,7 @@ describe "PUT /spots/:id", type: :request do
   it "updates the spot" do
     spot = create(:spot)
 
-    put "/spots/#{spot.to_param}", format: :json, name: "updated"
+    put spot_path(spot), format: :json, name: "updated"
 
     expect(response.status).to eq 200
   end

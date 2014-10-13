@@ -21,6 +21,7 @@ gem 'rails', '>= 4.1.2'
 gem 'rails-api'
 gem 'recipient_interceptor'
 gem 'unicorn'
+gem 'validate_url'
 gem 'workless', '~> 1.2.2'
 
 group :development do

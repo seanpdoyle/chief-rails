@@ -215,6 +215,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    validate_url (0.2.2)
+      activemodel (>= 3.0.0)
+      addressable
     webmock (1.15.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -267,5 +270,6 @@ DEPENDENCIES
   spring-commands-rspec
   timecop
   unicorn
+  validate_url
   webmock (= 1.15.0)
   workless (~> 1.2.2)
