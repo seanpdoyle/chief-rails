@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/seanpdoyle/chief-rails.png)](https://travis-ci.org/seanpdoyle/chief-rails)
-[![Code Climate](https://codeclimate.com/github/seanpdoyle/chief-rails/badges/gpa.svg)](https://codeclimate.com/github/seanpdoyle/chief-rails)
 
 [![Code Climate](https://codeclimate.com/github/seanpdoyle/chief-rails/badges/gpa.svg)](https://codeclimate.com/github/seanpdoyle/chief-rails)
 
