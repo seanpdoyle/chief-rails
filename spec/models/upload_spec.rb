@@ -8,15 +8,19 @@ describe Upload do
       upload = Upload.new(url: "http://google.com")
       allow(Delayed::Job).to receive(:enqueue).with(upload).and_return(:queued)
 
-      expect(upload.save).to be :queued
+      saved = upload.save
+
+      expect(saved).to be true
+      expect(upload.job).to be :queued
     end
 
     it "doesn't enqueue if the url is missing" do
       allow(Delayed::Job).to receive(:enqueue)
       upload = Upload.new
 
-      upload.save
+      saved = upload.save
 
+      expect(saved).not_to be
       expect(Delayed::Job).not_to have_received(:enqueue)
     end
   end

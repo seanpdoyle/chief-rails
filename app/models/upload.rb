@@ -1,13 +1,15 @@
 class Upload
   include ActiveModel::Model
+  include ActiveModel::SerializerSupport
 
-  attr_accessor :url
+  attr_accessor :job, :url
 
   validates :url, presence: true, url: true
 
   def save
     if valid?
-      Delayed::Job.enqueue(self)
+      self.job = Delayed::Job.enqueue(self)
+      true
     end
   end
 

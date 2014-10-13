@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "required": ["upload"],
+  "properties": {
+    "upload": {
+      "type": "object",
+      "required" : [
+        "id",
+        "url"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "url" : { "type" : "string" }
+      }
+    }
+  }
+}

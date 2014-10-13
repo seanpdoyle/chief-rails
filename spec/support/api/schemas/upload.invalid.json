@@ -5,9 +5,7 @@
     "errors" : {
       "type" : "object",
       "additionalProperties" : {
-        "file" : { "type" : ["array"] },
-        "latitude" : { "type" : ["array"] },
-        "longitude" : { "type" : ["array"] }
+        "url" : { "type" : ["array"] }
       }
     }
   }

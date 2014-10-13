@@ -2,12 +2,16 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
 
-    @upload.save
+    if @upload.save
+      render json: @upload
+    else
+      render json: { errors: @upload.errors }, status: 422
+    end
   end
 
   private
 
   def upload_params
-    params.require(:upload).permit(:url)
+    params.fetch(:upload, {}).permit(:url)
   end
 end
