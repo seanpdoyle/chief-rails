@@ -1,0 +1,6 @@
+---
+# The Skylight ID for the application.
+application: <%= ENV.fetch("SKYLIGHT_APPLICATION", "chief") %>
+
+# The authentication token for the application.
+authentication: <%= ENV.fetch("SKYLIGHT_AUTHENTICATION", "chief") %>
