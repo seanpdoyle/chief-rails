@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
     if nearby.valid?
       @spots = nearby.spots
 
-      render json: @spots, meta: nearby, each_serializer: NearbySerializer
+      render json: @spots, meta: nearby
     else
       @spots = Spot.all
 

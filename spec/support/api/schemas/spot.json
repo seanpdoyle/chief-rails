@@ -13,8 +13,5 @@
     "longitude" : { "type" : ["number", "null"] },
     "name" : { "type" : ["string"] },
     "image_ids" : { "type" : ["array"] }
-  },
-  "additionalProperties": {
-    "distance": { "type": "number" }
   }
 }
