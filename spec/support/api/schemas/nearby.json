@@ -4,11 +4,11 @@
   "properties": {
     "spots" : {
       "type" : "array",
-      "items": <%= schema_for("spot") %>
+      "items": { "$ref": "spot.json" }
     },
     "images" : {
       "type" : "array",
-      "items": <%= schema_for("image") %>
+      "items": { "$ref": "image.json" }
     },
     "meta": {
       "type": "object",

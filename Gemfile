@@ -45,10 +45,9 @@ end
 group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'database_cleaner'
-  gem 'json-schema'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
-  gem 'shoulda-matchers-json', require: false
+  gem 'json-matchers', require: false
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock', '1.15.0'
